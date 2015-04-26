@@ -1,0 +1,345 @@
+@media screen {
+	body {
+		font: 100%/1.4 'MuseoSans-500', Arial, Helvetica;
+		background-color: #42413C;
+		background:fixed;
+		margin: 0;
+		padding: 0;
+		color: #333;
+		font-size: 13px;
+	}
+
+	::selection {
+		background: #666; /* Safari */
+		color:#FFF;
+	}
+	::-moz-selection {
+		background: #666; /* Firefox */
+		color:#FFF;
+	}
+
+
+
+	/* ~~ Element/tag selectors ~~ */
+	ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+		padding: 0;
+		margin: 0 0 0 20px;
+	}
+	h1, h2, h3, h4, h5, h6, p {
+		margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	}
+	h2,
+	.h2 {
+		font-size: 23px;
+		font-weight: bold;
+		border-bottom: 1px solid #ccc;
+		display: block;
+		margin-bottom: 10px;
+		padding-bottom: 5px;
+	}
+	h3,
+	.h3 {
+		margin: 10px 0 0;
+	}
+	a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+		border: none;
+	}
+	/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+	a:link {
+		color: #68838B;
+		text-decoration: underline;
+	}
+	a:visited {
+		color: #68838B;
+		text-decoration: underline;
+	}
+	a:hover, 
+	a:active, 
+	a:focus { 
+		text-decoration: none;
+	}
+
+	.access {
+		position: absolute;
+		left: -9999px;
+	}
+
+	.container,
+	.title,
+	.main-content,
+	.nav-wrap ul,
+	.footer {
+		max-width: 920px;
+		min-width: 320px;
+		margin: 0 auto;
+	}
+
+	.section {
+		padding-top: 10px;
+	}
+	.section:first-child {
+		padding-top: 0;
+	}
+
+	.title {
+		padding: 20px;
+		overflow: hidden;
+		zoom: 1;
+		position: relative;
+	}
+	.social {
+		margin: 0;
+	}
+	.social li {
+		display: inline-block;
+	}
+	.nav-wrap {
+		background: #eee;
+		padding: 5px 0;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+	}
+	.nav-wrap ul {
+		padding: 0 20px;
+	}
+	.nav-wrap li {
+		display: inline-block;
+		margin-right: 10px;
+	}
+	.nav-wrap ul a {
+		font-size: 17px;
+	}
+	.nav-wrap .active {
+		color: #000;
+		text-decoration: underline;
+	}
+
+	.iphone-menu {
+		display: none;
+	}
+	.main-content {
+		padding: 180px 20px 0 20px;
+	}
+	.touch .main-content {
+		padding-top: 10px;
+	}
+
+	#arrow {
+		display:none;	
+	}
+
+	#arrow-right {
+		display:none;
+	}
+
+	#arrow-left {
+		display:none;
+	}
+
+	/* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
+	.header {
+		background-color: #FFF;
+		position:fixed;
+		width:100%;
+		z-index:1001;
+		/*box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);*/
+	}
+	.touch .header {
+		position: relative;
+	}
+
+	/* ~~ This is the layout information. ~~ 
+
+	1) Padding is only placed on the top and/or bottom of the div. The elements within this div have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+	*/
+
+	.content {
+
+		padding: 150px 0;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+	/* ~~ The footer ~~ */
+	.footer {
+		padding: 0 20px;
+	}
+	.footer ul {
+		margin: 0;
+	}
+	.footer li {
+		display: inline-block;
+		width: 50%;
+		float: left;
+		text-align: center;
+	}
+	.footer a {
+		padding: 10px 30px;
+		margin: 10px auto;
+		display: block;
+		max-width: 250px;
+		border: 1px dashed #ccc;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		overflow: hidden;
+	}
+
+	.footer a:hover {
+		border:1px solid #ccc;
+	}
+
+	.footer-wrap {
+		position:fixed;
+		bottom:-70px;
+		width:100%;
+		-moz-box-shadow: 0 0 5px #888;
+		-webkit-box-shadow: 0 0 5px#888;
+		box-shadow: 0 0 5px #888;
+		z-index:1001;
+		background: #fff;
+
+		-webkit-transition: ease-in-out .2s ;
+	    -moz-transition: ease-in-out .2s ;
+	    -o-transition: ease-in-out .2s ;
+	    -ms-transition: ease-in-out .2s ;
+	    transition: ease-in-out .2s;
+	}
+
+	.footer-wrap.show {
+		bottom: 0;
+	}
+
+	.touch .footer-wrap {
+		position: relative;
+		display: block;
+		bottom: 0;
+	}
+
+	.contact-wrapper {
+		position:fixed;
+		width:100%;
+		height:100%;	
+		display:none;
+		text-align:right;
+		background: rgba(0, 0, 0, 0.3);
+		top: 0;
+		left: 0;
+	}
+
+	.contact-card {
+		position: absolute;
+		max-width:500px;
+		background-color:#FFF;
+		z-index:1001;
+		padding:20px;	
+		border-radius:15px;
+		text-align:center;
+		box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3)
+	}
+
+	#exp .employer {
+		border-bottom: 1px solid #eee;
+		padding-bottom: 15px;
+	}
+
+	.employer h3 {
+		font-size: 12px;
+		color: #666;
+	}
+	.employer .role {
+		font-style: italic;
+		margin-bottom: 10px;
+		display: block;
+	}
+
+	h3 a:link,
+	h3 a:visited,
+	h3 .employer-title {
+		font-size: 16px;
+	}
+
+	.job-list li {
+		position: relative;
+	}
+
+	.tooltip {
+		display: none;
+		position: absolute;
+		top: 20px;
+		left: -20px;
+		padding: 10px;
+		background: #fff;
+		-moz-box-shadow: 5px 5px 10px #888;
+		-webkit-box-shadow: 5px 5px 10px #888;
+		box-shadow: 5px 5px 10px #888;
+		z-index: 999;
+	}
+	.tooltip img {
+		width: 100%;
+	}
+	.touch .tooltip {
+		display: none;
+	}
+
+	.contact-card ul {
+		list-style: none;
+	}
+	.contact-card li {
+		padding-bottom: 5px;
+	}
+	.contact-card a {
+		display: block;
+	}
+	.mouse-here {
+		text-align: center;
+		padding: 20px 15px 15px;
+		display: block;
+		color: #ccc;
+	}
+
+	.touch .mouse-here {
+		display: none;
+	}
+        .alert {
+border: 1px solid #f53d3d;
+padding: 10px 10px 10px 135px;
+border-radius: 10px;
+background-color: #fef5f5;
+color:#f53d3d;
+position:relative;
+}
+.alert h2 { 
+border-bottom:0; 
+position:absolute;
+top:3px;
+left:10px;
+
+}
+.alert p { margin:0; }
+}
+@media screen and (min-width: 550px) {
+	.header {
+		position: fixed;
+	}
+	.main-content {
+		padding-top: 145px;
+		padding-bottom: 5px;
+	}
+	.nav-wrap ul a {
+		font-size: 14px;
+	}
+	.nav-wrap li {
+		margin-right: 20px;
+	}
+	.social {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+	}
+}
+
+@media screen and (min-height:700px) {
+
+}
