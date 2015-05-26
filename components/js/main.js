@@ -38,22 +38,18 @@ $(function() {
 				tooltip.find('img').attr('src', '../images/loading.gif');
 			}
 		});
-var t = setTimeout(function() {
-		theFooter.removeClass('show');
-	}, 2000);
+		var t = setTimeout(function() {
+			theFooter.removeClass('show');
+		}, 2000);
 
-$(document).on('mousemove', function(e) {
-				if (e.clientY > (windowHeight - 200)) {
+		$(document).on('mousemove', function(e) {
+			if (e.clientY > (windowHeight - 200)) {
 					theFooter.addClass('show');
 				} else {
 					theFooter.removeClass('show');
 				}
-		});
-
-		
-	}
-	
-
+		});	
+	};
 
 	$('.nav-wrap').on('click', 'a', function(e) {
 		e.preventDefault();
