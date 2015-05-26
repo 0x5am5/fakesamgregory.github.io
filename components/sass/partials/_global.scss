@@ -41,18 +41,17 @@
     border: none;
   }
   /* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
-  a:link {
-    color: #68838B;
-    text-decoration: underline;
-  }
+  a:link,
   a:visited {
-    color: #68838B;
-    text-decoration: underline;
+    color: $main-color;
+    text-decoration: none;
   }
+
   a:hover, 
   a:active, 
   a:focus { 
-    text-decoration: none;
+    text-decoration: underline;
+    color: darken($main-color, 20);
   }
 
   .access {
@@ -120,18 +119,6 @@
     padding-top: 10px;
   }
 
-  #arrow {
-    display:none; 
-  }
-
-  #arrow-right {
-    display:none;
-  }
-
-  #arrow-left {
-    display:none;
-  }
-
   /* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
   .header {
     background-color: #FFF;
@@ -197,10 +184,10 @@
     background: #fff;
 
     -webkit-transition: ease-in-out .2s ;
-      -moz-transition: ease-in-out .2s ;
-      -o-transition: ease-in-out .2s ;
-      -ms-transition: ease-in-out .2s ;
-      transition: ease-in-out .2s;
+    -moz-transition: ease-in-out .2s ;
+    -o-transition: ease-in-out .2s ;
+    -ms-transition: ease-in-out .2s ;
+    transition: ease-in-out .2s;
   }
 
   .footer-wrap.show {
