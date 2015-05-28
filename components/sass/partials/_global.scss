@@ -64,3 +64,11 @@
     left: -9999px;
   }
 }
+
+@media screen and (max-width: 550px) {
+
+  body {
+    font-size: 14px;
+  }
+
+}

@@ -32,8 +32,8 @@ $(function() {
 			if (e.type === 'mouseenter') {
 				tooltip.find('img').attr('src', '../images/' + img + '.jpg');
 				target.parent().append(tooltip.show());
-
-				if ((tooltip.offset().top + tooltip.height()) > (theWindow.scrollTop() + theWindow.height())) tooltip.css({ 'bottom': 30, 'top': 'auto'})
+				
+				if ((tooltip.offset().top + tooltip.outerHeight()) > (theWindow.scrollTop() + theWindow.height())) tooltip.css({ 'bottom': 30, 'top': 'auto'})
 			}
 			else {
 				tooltip.removeAttr('style');
@@ -68,6 +68,15 @@ $(function() {
 		});
 	});
 
+	var body = $('.more'),
+			trigger = $('.more-trigger');
+
+	trigger.on('click', function(e) {
+		e.preventDefault();
+		body.toggleClass('show');
+		trigger.toggleClass('body-show');
+	});
+
 	
 });
 
@@ -96,8 +105,5 @@ function hideShow(divid) {
 		// }
 
 		// $('.contact-card ul').css('height', $(window).height() - ( $('.header').outerHeight() + $('.footer-wrap').outerHeight() ))
-
-		if ( card.height > ($(window).height() - ( $('.header').height() + $('.footer-wrap').height() )) ) {
-			console.log('hi')
-		}
 }
+

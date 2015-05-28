@@ -75,6 +75,15 @@
     margin: 0;
   }
 }
+
+.more-trigger {
+  display: none;
+
+  .less-txt {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 550px) and (max-width: 940px) {
   .main-content {
     padding: 145px 20px 5px 20px;
@@ -82,6 +91,7 @@
 }
 
 @media screen and (max-width: 550px) {
+
   .main-content,
   .nav-wrap ul {
     padding: {
@@ -100,5 +110,26 @@
 
   .social {
     padding: 0;
+  }
+
+  .js .more-trigger {
+    display: inline-block;
+  }
+
+  .js .more {
+    display: none;
+
+    &.show {
+      display: block;
+    }
+  }
+  .body-show {
+    .more-txt {
+        display: none;
+      }
+
+      .less-txt {
+        display: inline;
+      }
   }
 }
