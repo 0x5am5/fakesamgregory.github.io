@@ -1,0 +1,57 @@
+.header {
+  background-color: #FFF;
+  position:fixed;
+  width:100%;
+  z-index:1;
+
+  .social {
+    margin: 0;
+
+    li {
+      display: inline-block;
+    }
+  }
+
+  .nav-wrap {
+    background: #eee;
+    padding: 5px 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    
+    ul {
+      padding: 0 20px;      
+
+      a {
+        font-size: 17px;        
+      }
+    }
+    li {
+      display: inline-block;      
+      margin-right: 10px;
+    }
+  }
+
+}
+
+.touch .header {
+  position: relative;
+}
+
+@media screen and (min-width: 550px) {
+  .header {
+    
+    .nav-wrap {
+      ul a {
+        font-size: 14px;
+      }
+      li {
+        margin-right: 20px;
+      }
+    }
+    .social {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+}

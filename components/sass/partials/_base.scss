@@ -1,0 +1,104 @@
+.title,
+.main-content,
+.nav-wrap ul,
+.footer {
+  max-width: 920px;
+  min-width: 320px;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 10px;
+}
+
+.title {
+  padding: 20px;
+  position: relative;
+}
+
+
+.main-content {
+  padding-top: 145px;
+}
+
+.touch .main-content {
+  padding-top: 10px;
+}
+
+#exp .employer {
+  border-top: 1px solid #eee;
+
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+.employer .role {
+  font-style: italic;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.job-list li {
+  position: relative;
+}
+
+.mouse-here {
+  text-align: center;
+  padding: 20px 15px;
+  border-top: 1px solid #eee;
+  color: #ccc;
+  
+}
+
+.touch .mouse-here {
+  display: none;
+}
+
+.alert {
+  border: 1px solid #f53d3d;
+  padding: 10px 10px 10px 145px;
+  @include border-radius;
+  background-color: #fef5f5;
+  color:#f53d3d;
+  position:relative;
+  margin-bottom: 15px;
+
+  h2 {
+    border-bottom:0; 
+    position:absolute;
+
+    top:3px;
+    left:10px;      
+  }
+  p {
+    margin: 0;
+  }
+}
+@media screen and (min-width: 550px) and (max-width: 940px) {
+  .main-content {
+    padding: 145px 20px 5px 20px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .main-content,
+  .nav-wrap ul {
+    padding: {
+      left: 10px;
+      right: 10px;
+    }
+  }
+
+  .main-content {
+    padding-top: 160px;
+  }
+
+  .title {
+    padding: 10px;
+  }
+
+  .social {
+    padding: 0;
+  }
+}

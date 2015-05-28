@@ -9,6 +9,7 @@ $(function() {
 
 	if (touch) $('body').addClass('touch');
 			
+	// Contact-wrapper
 	$('.references, .contact-wrapper').click(function(e) {
 		if (!$(e.target).parents('.contact-card').length) {
 			e.preventDefault();
@@ -22,6 +23,7 @@ $(function() {
 		}
 	});
 
+	// Tooltips
 	if (!touch) {
 		$('.job-list').on('hover', 'a[data-img]', function(e) {
 			var target = $(this),
@@ -51,6 +53,8 @@ $(function() {
 		});	
 	};
 
+
+	// Navigation
 	$('.nav-wrap').on('click', 'a', function(e) {
 		e.preventDefault();
 
@@ -63,25 +67,6 @@ $(function() {
 			scrollTop: localY - offset
 		});
 	});
-
-	theWindow.on('scroll', function() {
-		var currentpos = theWindow.scrollTop(),
-			body = $('.section');
-
-		$('.nav-wrap a').removeClass('active');
-				
-		body.each(function(i) {
-			var target = $(this),
-				top = target.position().top - (headerHeight + 20),
-				bottom = target.offset().top + (target.height() - 150),
-				index = target.index();
-
-			if (currentpos > top && currentpos < bottom) {
-				$('.nav-wrap li').eq(index).find('a').addClass('active');
-			}
-
-		});
-	}).trigger('scroll');
 
 	
 });

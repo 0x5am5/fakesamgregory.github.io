@@ -1,5 +1,11 @@
 /* vendors */
 @import "compass/utilities";
+@import "compass/css3";
 
-@import "partials/_variables.scss";
-@import "partials/_global.scss";
+@import "partials/variables";
+@import "partials/global";
+@import "partials/header";
+@import "partials/footer";
+@import "partials/base";
+@import "partials/contact-card";
+@import "partials/tooltip";

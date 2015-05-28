@@ -1,0 +1,35 @@
+.contact-wrapper {
+  position:fixed;
+  width:100%;
+  height:100%;  
+  display:none;
+  text-align:right;
+  background: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+}
+
+.contact-card {
+  position: absolute;
+  max-width:500px;
+  background-color:#FFF;
+  z-index:1001;
+  padding:20px; 
+  @include border-radius;
+  @include box-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+  text-align:center;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    padding-bottom: 5px;    
+  }
+
+  a {
+    display: block;    
+  }
+}

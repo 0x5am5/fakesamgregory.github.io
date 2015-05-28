@@ -1,0 +1,49 @@
+ .footer {
+  padding: 0 20px;
+
+  ul {
+    margin: 0;
+    padding: 0;      
+  }
+
+  li {
+    width: 50%;
+    float: left;
+    text-align: center;      
+  }
+
+  a {
+    padding: 10px 30px;
+    margin: 10px auto;
+    display: block;
+    max-width: 250px;
+    border: 1px dashed #ccc;
+    @include border-radius;
+    overflow: hidden;   
+
+    &:hover {
+      border:1px solid #ccc;
+    }   
+  }
+}
+
+.footer-wrap {
+  position:fixed;
+  bottom:-70px;
+  width:100%;
+  @include box-shadow(0 0 5px #888);
+  z-index:1;
+  background: #fff;
+
+  @include transition(ease-in-out .2s);
+
+  &.show {
+    bottom: 0;      
+  }
+}
+
+.touch .footer-wrap {
+  position: relative;
+  display: block;
+  bottom: 0;
+}
