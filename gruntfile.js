@@ -2,6 +2,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-autoprefixer');
 
   grunt.initConfig({
     uglify: {
@@ -28,6 +29,14 @@ module.exports = function(grunt) {
         files: ['components/sass/**/*'],
         tasks: ['compass:dev']
       }
+    },
+    autoprefixer: {
+      options: {
+        remove:false
+      },
+      your_target: {
+        // Target-specific file lists and/or options go here.
+      },
     }
   });
 
