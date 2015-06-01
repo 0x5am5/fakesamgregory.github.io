@@ -12,6 +12,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     compass: {
       dev: {
         options: {
@@ -19,6 +20,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     watch: {
       options: { livereload: true },
       scripts: {
@@ -27,16 +29,20 @@ module.exports = function(grunt) {
       },
       sass : {
         files: ['components/sass/**/*'],
-        tasks: ['compass:dev']
+        tasks: ['compass:dev', 'autoprefixer']
       }
     },
+
     autoprefixer: {
       options: {
-        remove:false
+        browsers: ['last 2 versions']
       },
-      your_target: {
-        // Target-specific file lists and/or options go here.
-      },
+      multiple_files: {
+        expand: true,
+        flatten: true,
+        src: 'compiled/css/*.css',
+        dest: ''
+      }
     }
   });
 

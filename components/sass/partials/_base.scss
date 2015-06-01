@@ -58,7 +58,7 @@
 .alert {
   border: 1px solid #f53d3d;
   padding: 10px 10px 10px 145px;
-  @include border-radius;
+  border-radius: $border-radius;
   background-color: #fef5f5;
   color:#f53d3d;
   position:relative;
