@@ -22,7 +22,16 @@
       padding: 0 20px;      
 
       a {
-        font-size: 17px;        
+        font-size: 17px;    
+
+        &:visited {
+          color: $main-color;
+
+          &:hover {
+            background: $main-color;    
+            color: #fff;    
+          }
+        }    
       }
     }
     li {
