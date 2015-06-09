@@ -39,25 +39,49 @@
     color: #666;
   }
 
-  h3 a:link,
-  h3 a:visited,
-  h3 .employer-title {
-    font-size: 16px;
+  h3
+  { 
+    a:link,
+    & a:visited,
+    & .employer-title {
+      font-size: 16px;
+    }
   }
 
-  a:link,
-  a:visited {
-    color: $main-color;
-    text-decoration: none;
+  a 
+  {
+    
+    &:link 
+    {
+      color: $main-color;
+      text-decoration: none;
+      padding: 3px 4px;
+      margin-left: -4px;
+    }
+
+    &:visited 
+    {
+      color: $second-color;
+
+      &:hover {
+        background: $second-color;        
+      }
+    }
+
+    &:hover, 
+    &:focus,
+    &:active, 
+    &.active 
+    { 
+      /*text-decoration: underline;*/
+      background: $main-color;
+      color: #fff;
+      outline: $main-color;
+      border-radius: 3px;
+    }
+    
   }
 
-  a:hover, 
-  a:active, 
-  a:focus,
-  a.active { 
-    text-decoration: underline;
-    color: darken($main-color, 20);
-  }
 
   .access {
     position: absolute;

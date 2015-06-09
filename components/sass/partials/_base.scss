@@ -110,6 +110,10 @@
 
   .social {
     padding: 0;
+
+    a:hover {
+      background-color: red;
+    }
   }
 
   .js .more-trigger {
