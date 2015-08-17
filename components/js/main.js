@@ -68,14 +68,17 @@ $(function() {
 		});
 	});
 
-	var body = $('.more'),
-			trigger = $('.more-trigger');
 
-	trigger.on('click', function(e) {
-		e.preventDefault();
-		body.toggleClass('show');
-		trigger.toggleClass('body-show');
-	});
+	$('.show-more').each(function() {
+		var body = $(this).find('.more'),
+				trigger = $(this).find('.more-trigger');
+
+		trigger.on('click', function(e) {
+			if (!$(e.currentTarget).is('h2')) e.preventDefault();
+			body.toggleClass('show');
+			trigger.toggleClass('body-show');
+		});		
+	})
 
 	
 });
