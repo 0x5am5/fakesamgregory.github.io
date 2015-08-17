@@ -3,22 +3,31 @@
 .nav-wrap ul,
 .footer {
   max-width: 920px;
-  min-width: 320px;
+  /*min-width: 320px;*/
   margin: 0 auto;
 }
 
 .section {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+
+  &__content
+  {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: #fff;
+    border-top: 4px solid $main-color;
+    padding: 20px;
+  }
 }
 
 .title {
-  padding: 20px;
+  padding: 10px 20px;
   position: relative;
 }
 
 
 .main-content {
-  padding-top: 145px;
+  padding-top: 135px;
 }
 
 .touch .main-content {
@@ -30,6 +39,25 @@
 
   &:first-child {
     border-top: 0;
+  }
+}
+
+
+
+.pro-pic
+{
+  text-align: center;
+  background: url(../images/bg-img.jpg);
+  margin-bottom: 30px;
+  border-radius: 30px;
+
+  img
+  {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius:  300px;  
+    border: 5px solid $main-color; 
+    box-shadow: 2px 2px 10px #888888;
   }
 }
 
@@ -86,13 +114,23 @@
 
 @media screen and (min-width: 550px) and (max-width: 940px) {
   .main-content {
-    padding: 145px 20px 5px 20px;
+    padding: 135px 20px 5px 20px;
   }
 }
 
 @media screen and (max-width: 550px) {
 
-  .main-content,
+  .pro-pic
+  {
+    img
+    {
+      max-width: 150px;
+      max-height: 150px;
+      border-radius:  150px;  
+    }
+  }
+
+  .section,
   .nav-wrap ul {
     padding: {
       left: 10px;
@@ -100,8 +138,20 @@
     }
   }
 
+  .section
+  {
+    margin-bottom: 10px; 
+
+     &__content
+    {
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      padding: 0 15px 15px;
+    }
+  }
+
   .main-content {
-    padding-top: 160px;
+    padding-top: 155px;
   }
 
   .title {

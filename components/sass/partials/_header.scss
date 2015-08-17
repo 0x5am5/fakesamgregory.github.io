@@ -19,10 +19,11 @@
     border-bottom: 1px solid #ccc;
     
     ul {
-      padding: 0 20px;      
+      padding: 0 10px;      
+      text-align: center;
 
       a {
-        font-size: 17px;    
+        font-size: 14px;    
 
         &:visited {
           color: $main-color;
@@ -36,7 +37,15 @@
     }
     li {
       display: inline-block;      
-      margin-right: 10px;
+      margin-right: 0;
+      border-left: 2px solid $main-color;
+      padding-left: 10px;
+
+      &:first-child
+      {
+        padding-left: 0;
+        border-left: 0;
+      }
     }
   }
 
@@ -50,11 +59,21 @@
   .header {
     
     .nav-wrap {
-      ul a {
+      ul {
+        text-align: left;
+        padding: 0 20px;
+      }
+      a {
         font-size: 14px;
       }
       li {
-        margin-right: 20px;
+        margin-right: 10px;
+        border-left: 0;
+
+        &:first-child
+        {
+          padding-left: 0;
+        }
       }
     }
     .social {
