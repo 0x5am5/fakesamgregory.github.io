@@ -5,7 +5,7 @@
     left: -20px;
     padding: 10px;
     background: #fff;
-    @include box-shadow(5px 5px 10px #888);
+    box-shadow: 5px 5px 10px #888;
     z-index: 2;
   }
   .tooltip img {

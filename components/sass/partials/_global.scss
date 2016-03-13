@@ -1,7 +1,5 @@
 @import url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 
-
-@media screen {
   body {
     font: 100%/1.4 'MuseoSans-500', Arial, Helvetica;
     margin: 0;
@@ -19,7 +17,7 @@
     color:#FFF;    
   }
 
-  #{headings()} {
+  h1, h2, h3, h4 {
     margin-top: 0;  
   }
 
@@ -78,8 +76,7 @@
       color: #fff;
       outline: $main-color;
       border-radius: 3px;
-    }
-    
+    } 
   }
 
 
@@ -87,12 +84,48 @@
     position: absolute;
     left: -9999px;
   }
-}
+
+  .pro-img {
+    border-radius: 300px;
+    width: 300px;
+    position: absolute;
+    right: 0;
+    top: 40px;
+  }
+
+  .grid {
+    overflow: hidden;
+
+    .col {
+      float: left;
+      display: inline-block;
+    }
+
+    .w-50 {
+      width: 50%;
+    }
+  }
 
 @media screen and (max-width: 550px) {
 
   body {
     font-size: 14px;
+  }
+
+  .pro-pic
+  {
+    display: none;
+  }
+
+  .grid {
+
+    .col {
+      display: block;
+    }
+
+    .w-50 {
+      width: 100%;
+    }
   }
 
 }

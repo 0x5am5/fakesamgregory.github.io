@@ -1,10 +1,14 @@
 module.exports = function(grunt) {
+
+
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-autoprefixer');
 
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+
     uglify: {
       my_target: {
         files: {
@@ -13,23 +17,15 @@ module.exports = function(grunt) {
       }
     },
 
-    compass: {
+    sass: {
       dev: {
         options: {
-          config: 'config.rb'
+          style: 'compressed',
+          sourcemap: 'none'
+        },
+        files: {
+          'css/main.css': 'components/sass/main.scss'
         }
-      }
-    },
-
-    watch: {
-      options: { livereload: true },
-      scripts: {
-        files: ['components/js/*.js'],
-        tasks: ['uglify']        
-      },
-      sass : {
-        files: ['components/sass/**/*'],
-        tasks: ['compass:dev', 'autoprefixer']
       }
     },
 
@@ -40,11 +36,23 @@ module.exports = function(grunt) {
       multiple_files: {
         expand: true,
         flatten: true,
-        src: 'compiled/css/*.css',
-        dest: 'css/'
+        src: 'compiled/*.css',
+        dest: ''
+      }
+    },
+
+    watch: {
+      options: { livereload: true },
+      scripts: {
+        files: ['components/js/*.js'],
+        tasks: ['uglify']        
+      },
+      css : {
+        files: ['components/**/*'],
+        tasks: ['sass', 'autoprefixer']
       }
     }
   });
 
-  grunt.registerTask('default', 'watch');
+  grunt.registerTask('default', ['watch']);
 }
