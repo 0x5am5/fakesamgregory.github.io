@@ -1,5 +1,6 @@
  .footer {
   padding: 0 20px;
+  background: #fff;
 
   ul {
     margin: 0;
@@ -27,6 +28,11 @@
   }
 }
 
+.mouse-here
+{
+  background: #fff;
+}
+
 .footer-wrap {
   position:fixed;
   bottom:-70px;
@@ -46,4 +52,20 @@
   position: relative;
   display: block;
   bottom: 0;
+}
+
+@media screen and (max-width: 550px) {
+  .footer
+  {
+    a
+    {
+      padding: 10px 5px;
+    }
+
+    li:first-child a
+    {
+      margin-right: 5px;
+    }
+  }
+  
 }

@@ -1,25 +1,26 @@
-.title,
-.main-content,
-.nav-wrap ul,
-.footer {
-  max-width: 920px;
-  min-width: 320px;
-  margin: 0 auto;
-}
-
 .section {
-  margin-bottom: 10px;
-  position: relative;
+
+  margin-bottom: 30px;
+
+  &__content
+  {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: #fff;
+    border-top: 4px solid $main-color;
+    padding: 20px;
+  }
+
 }
 
 .title {
-  padding: 20px;
+  padding: 10px 20px;
   position: relative;
 }
 
 
-.main-content {
-  padding-top: 145px;
+.container.main-content {
+  padding-top: 150px;
 }
 
 .touch .main-content {
@@ -32,6 +33,32 @@
   &:first-child {
     border-top: 0;
   }
+}
+
+
+
+.pro-pic
+{
+  text-align: center;
+  background: url(../images/bg-img.jpg);
+  margin-bottom: 30px;
+  border-radius: 30px;
+  background-position-y: -350px;
+  background-repeat-y: no-repeat;
+
+  img
+  {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius:  300px;  
+    border: 5px solid $main-color; 
+    box-shadow: 2px 2px 10px #888888;
+  }
+}
+
+.pro-pic--animate {
+  transition: background-position-y ease 1.5s;
+  background-position-y: 0;
 }
 
 .employer .role {
@@ -77,32 +104,107 @@
   }
 }
 
+#home
+{
+  .more-trigger
+  {
+    display: none;
+  }
+}
 .more-trigger {
-  display: none;
+  /*display: none;*/
+
+  border: none;
+  background: #FFF;
+  font-size: 23px;
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 5px;
+  padding: 5px 20px;
 
   .less-txt {
     display: none;
   }
+
+  .glyphicon-minus,
+  .glyphicon-plus {
+      display: none;
+  }
+}
+
+.js .show-more
+{
+
+  .more {
+    display: none;
+
+    &.show {
+      display: block;
+    }
+
+  }
+
+  .more-trigger {
+    .glyphicon-minus {
+      display: none;
+    }
+    .glyphicon-plus {
+      display: inline-block;
+    }
+    
+
+
+    &.body-show {
+      .glyphicon-minus {
+        display: inline-block;
+      }
+      .glyphicon-plus {
+        display: none;
+      }
+    }
+  }
+
 }
 
 @media screen and (min-width: 550px) and (max-width: 940px) {
   .main-content {
-    padding: 145px 20px 5px 20px;
+    padding: 135px 20px 5px 20px;
   }
 }
 
 @media screen and (max-width: 550px) {
 
-  .main-content,
-  .nav-wrap ul {
+  .pro-pic
+  {
+    img
+    {
+      max-width: 150px;
+      max-height: 150px;
+      border-radius:  150px;  
+    }
+  }
+
+  .section {
     padding: {
       left: 10px;
       right: 10px;
     }
   }
 
+  .section
+  {
+    margin-bottom: 10px; 
+
+     &__content
+    {
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      padding: 15px;
+    }
+  }
+
   .main-content {
-    padding-top: 160px;
+    padding-top: 155px;
   }
 
   .title {

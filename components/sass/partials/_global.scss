@@ -6,6 +6,7 @@
     padding: 0;
     color: #333;
     font-size: 13px;
+    background: $second-color;
   }
 
   ::selection {
@@ -25,15 +26,17 @@
   .h2 {
     font-size: 23px;
     font-weight: bold;
-    border-bottom: 1px solid #ccc;
-    display: block;
-    margin-bottom: 10px;
+    display: inline-block;
+    background: #fff;
+    /*margin-bottom: 10px;*/
+    margin: 0;
     padding-bottom: 5px;
+    padding: 5px 20px;
   }
   h3,
   .h3 {
     margin: 10px 0 0;
-    font-size: 12px;
+    font-size: 16px;
     color: #666;
   }
 
@@ -85,13 +88,6 @@
     left: -9999px;
   }
 
-  .pro-img {
-    border-radius: 300px;
-    width: 300px;
-    position: absolute;
-    right: 0;
-    top: 40px;
-  }
 
   .grid {
     overflow: hidden;
@@ -111,21 +107,10 @@
   body {
     font-size: 14px;
   }
-
-  .pro-pic
+  ul
   {
-    display: none;
-  }
+    padding-left: 25px;
 
-  .grid {
-
-    .col {
-      display: block;
-    }
-
-    .w-50 {
-      width: 100%;
-    }
   }
 
 }

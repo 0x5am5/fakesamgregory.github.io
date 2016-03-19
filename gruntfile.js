@@ -5,6 +5,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -43,16 +44,32 @@ module.exports = function(grunt) {
 
     watch: {
       options: { livereload: true },
+      sass: {
+        files: ['components/**/*.scss'],
+        tasks: ['sass', 'autoprefixer']          
+      },
       scripts: {
         files: ['components/js/*.js'],
-        tasks: ['uglify']        
+        tasks: ['copy:script']
+      }
+    },
+
+    copy: {
+      main: {
+        files: [
+          // flattens results to a single level
+          {expand: true, flatten: true, src: ['node_modules/bootstrap-sass/assets/fonts/bootstrap/**/*'], dest: 'css/fonts', filter: 'isFile'},
+        ],
       },
-      css : {
-        files: ['components/**/*'],
-        tasks: ['sass', 'autoprefixer']
+      script: {
+        files: [{
+          src: ['components/js/main.js'],
+          dest: 'js/scripts.js'
+        }]
       }
     }
+
   });
 
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['copy', 'watch']);
 }
