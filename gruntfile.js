@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -67,9 +68,21 @@ module.exports = function(grunt) {
           dest: 'js/scripts.js'
         }]
       }
+    },
+
+    handlebars: {
+      compile: {
+        options: {
+          namespace: "SG.templates"
+        },
+        files: {
+          "path/to/result.js": "path/to/source.hbs",
+          "path/to/another.js": ["path/to/sources/*.hbs", "path/to/more/*.hbs"]
+        }
+      }
     }
 
   });
 
-  grunt.registerTask('default', ['copy', 'watch']);
+  grunt.registerTask('default', ['copy', 'watch', 'handlebars']);
 }
