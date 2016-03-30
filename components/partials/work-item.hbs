@@ -1,3 +1,7 @@
 <div class="col-sm-3">
-  <img src="images/{{src}}" alt="{{alt}}">
+  {{#if embed}}
+    <iframe src="{{src}}" frameborder="0"></iframe>
+  {{else}}
+    <img src="images/{{src}}" alt="{{alt}}">
+  {{/if}}
 </div>

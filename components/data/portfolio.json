@@ -1,10 +1,22 @@
 [
   {
-  "src": "picture-1.jpg",
-  "alt": "hello"
+    "src": "velvettrumpet.jpg",
+    "alt": "Velvet Trumpet website"
   },
   {
-  "src": "picture-2.jpg",
-  "alt": "hello"
+    "src": "https://www.youtube.com/embed/WzTFuJyYVKg",
+    "embed": true
+  },
+  {
+    "src": "3dux.jpg",
+    "alt": "3DUX website"
+  },
+  {
+    "src": "https://www.youtube.com/embed/SEtP6IxUCfA",
+    "embed": true
+  },
+  {
+    "src": "https://player.vimeo.com/video/59504468",
+    "embed": true
   }
 ]
