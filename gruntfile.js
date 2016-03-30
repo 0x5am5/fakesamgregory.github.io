@@ -1,11 +1,10 @@
 module.exports = function(grunt) {
-
-
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-assemble');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -13,7 +12,7 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         files: {
-          'js/scripts.js': ['components/js/main.js']
+          'dist/js/scripts.js': ['components/js/main.js']
         }
       }
     },
@@ -25,7 +24,7 @@ module.exports = function(grunt) {
           sourcemap: 'none'
         },
         files: {
-          'css/main.css': 'components/sass/main.scss'
+          'dist/css/main.css': 'components/sass/main.scss'
         }
       }
     },
@@ -51,6 +50,10 @@ module.exports = function(grunt) {
       scripts: {
         files: ['components/js/*.js'],
         tasks: ['copy:script']
+      },
+      assemble: {
+        files: ['components/**/*.hbs'],
+        tasks: ['assemble']
       }
     },
 
@@ -63,13 +66,57 @@ module.exports = function(grunt) {
       },
       script: {
         files: [{
-          src: ['components/js/main.js'],
-          dest: 'js/scripts.js'
+          src: ['components/js/*'],
+          dest: 'dist/js/',
+          flatten: true,
+          expand: true
         }]
+      },
+      jquery: {
+        files: [{
+          src: 'js/jquery-1.8.2.min.js',
+          dest: 'dist/'
+        }]
+      },
+      images: {
+        files: [{
+          src: 'images/**/*',
+          dest: 'dist/'
+        }] 
+      }
+    },
+
+    assemble: {
+      options: {
+        assets: '/',
+        partials: ['components/partials/**/*.hbs'],
+        layoutdir: 'components/layouts',
+        data: ['components/data/*.{json,yml}']
+      },
+      site: {
+        options: {
+          layout: 'master.hbs'
+        },
+       files: [
+           {
+              expand: true,
+              cwd: 'components/pages/',
+              src: '**/*.hbs',
+              dest: 'dist/'
+           }
+        ]
       }
     }
 
   });
 
-  grunt.registerTask('default', ['copy', 'watch']);
+  grunt.registerTask('default', 
+    [
+    'copy', 
+    'sass', 
+    'autoprefixer', 
+    'assemble', 
+    'watch'
+    ]
+  );
 }
