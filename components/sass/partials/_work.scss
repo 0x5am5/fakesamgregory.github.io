@@ -1,0 +1,27 @@
+.work {
+	&-image {
+		position: relative;
+		margin-bottom: 10px;
+	}
+
+	&-image-hover {
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		padding: 5px 10px;
+		background: rgba($main-color, 0.9);
+		font-size: 18px;
+		display: none;
+		color: #FFF;
+
+		a {
+			color: #FFF;
+		}
+	}
+
+	&-image:hover {
+		.work-image-hover {
+			display: block;
+		}
+	}
+}

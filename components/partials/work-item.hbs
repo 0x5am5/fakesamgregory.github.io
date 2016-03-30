@@ -1,0 +1,14 @@
+<div class="col-sm-3 col-xs-6">
+  	<div class="work-image">
+  		{{#if embed}}
+  			<iframe src="{{src}}" frameborder="0" class="img-responsive"></iframe>
+  		{{else}}
+	  		<img src="images/{{src}}" alt="{{alt}}" class="img-responsive">  
+	  		<div class="work-image-hover">
+	  			{{#if link}}<a href="{{link}}" target="_blank">{{/if}}
+	  				{{alt}}    			
+	  			{{#if link}}</a>{{/if}}
+	  		</div>		
+  		{{/if}}
+	</div>
+</div>

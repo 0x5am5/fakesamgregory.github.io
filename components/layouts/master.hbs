@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Sam Gregory - Digital Developer</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  <link href="css/main.css" rel="stylesheet" type="text/css" />
+
+  <meta name="description" content="I'm Sam Gregory an Digital Developer based on London currently working at Digital Detox as a front end web developer. This is my portfolio website. Here are showcased all my works: websites, theatre, production, and more... ">
+  <meta name="keywords" content="Web, developer, html, css, PHP, Javascript, jquery, Production Manager, website, graphics, VFX framestore, rathergood.com">
+  <link rel="shortcut icon" href="http://thegloriousdead.in/samgregory/images/favicon.ico" />
+
+</head>
+<body>
+
+<div class="wrapper">
+  {{> header }}
+
+    {{> body }}
+
+  {{> footer}}
+
+  <span class="tooltip">
+    <img src="images/loading.gif" alt="No content">
+  </span>
+
+  <script src="js/jquery-1.8.2.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script src="http://localhost:35729/livereload.js"></script>
+
+  <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-27293381-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    var html = document.documentElement;
+    html.className = html.className.replace('no-js', 'js');
+
+  </script>
+</body>
+</html>
