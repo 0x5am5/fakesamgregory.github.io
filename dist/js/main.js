@@ -1,5 +1,4 @@
-$(function() {
-
+(function(){
 	var tooltip = $('.tooltip'),
 		headerHeight = $('.header').height(),
 		touch = ('ontouchstart' in window) || (window.DocumentTouch && document instanceof DocumentTouch),
@@ -96,18 +95,4 @@ function hideShow(divid) {
 			left: ($(window).width()/2) - (card.outerWidth()/2),
 			top: ($(window).height()/2) - (card.outerHeight()/2),
 		});
-
-		// if (card.css('display', 'block')) {
-		// 	$('.references').css({
-		// 		'background': '#ccc',
-		// 		'color': '#fff',
-		// 	})
-		// } 
-		// if (card.css('display', 'none')) {
-		// 	console.log('hi')
-		// 	$('.references').removeAttr('style');
-		// }
-
-		// $('.contact-card ul').css('height', $(window).height() - ( $('.header').outerHeight() + $('.footer-wrap').outerHeight() ))
-}
-
+})();

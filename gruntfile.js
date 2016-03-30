@@ -51,6 +51,10 @@ module.exports = function(grunt) {
       scripts: {
         files: ['components/js/*.js'],
         tasks: ['copy:script']
+      },
+      assemble: {
+        files: ['components/**/*.hbs', 'components/data/*.{json,yml}'],
+        tasks: ['assemble']
       }
     },
 
