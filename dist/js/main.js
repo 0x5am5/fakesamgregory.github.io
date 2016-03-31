@@ -1,4 +1,28 @@
 (function(){
+	console.log("%c%s", "color: #68838B; font-size: 18px;", "\\\\\\\\\\\\\\\\\\\\//////////");
+	console.log("%c%s", "color: #68838B; font-size: 18px;", "samuelgregory@me.com");
+	console.log("%c%s", "color: #68838B; font-size: 18px;", "//////////\\\\\\\\\\\\\\\\\\\\");
+
+	function hideShow(divid, content) {
+
+		var target = $('.'+divid);
+
+		if (content) {
+			target = target.clone().text(content);
+		}
+		
+
+		card = target.find('.contact-card');
+
+		target.toggle();
+
+		card.css({
+			left: ($(window).width()/2) - (card.outerWidth()/2),
+			top: ($(window).height()/2) - (card.outerHeight()/2),
+		});
+
+	}
+
 	var tooltip = $('.tooltip'),
 		headerHeight = $('.header').height(),
 		touch = ('ontouchstart' in window) || (window.DocumentTouch && document instanceof DocumentTouch),
@@ -14,6 +38,13 @@
 			e.preventDefault();
 			hideShow('contact-wrapper');
 		}
+	});
+
+	$('#workModal').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget);
+	  
+	  $(this).find('.modal-body').text(button.data('content'));
+	  $(this).find('.modal-header').html('<h4 class="modal-title">' + button.find('img').attr('alt') + '</h4>');
 	});
 
 	theWindow.resize(function() {
@@ -81,18 +112,4 @@
 
 	document.querySelector('.pro-pic').classList.add('pro-pic--animate');
 
-});
-
-function hideShow(divid) {
-
-	var target = $('.'+divid);
-
-		card = target.find('.contact-card');
-
-		target.toggle();
-
-		card.css({
-			left: ($(window).width()/2) - (card.outerWidth()/2),
-			top: ($(window).height()/2) - (card.outerHeight()/2),
-		});
 })();

@@ -1,11 +1,11 @@
-@import url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+// @import url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 
   body {
     font: 100%/1.4 'MuseoSans-500', Arial, Helvetica;
     margin: 0;
     padding: 0;
     color: #333;
-    font-size: 13px;
+    font-size: 16px;
     background: $second-color;
   }
 
@@ -51,18 +51,13 @@
 
   a 
   {
-    
-    &:link 
-    {
-      color: $main-color;
-      text-decoration: none;
-      padding: 3px 4px;
-      margin-left: -4px;
-    }
+    color: $main-color;
+    padding: 3px 4px;
+    margin-left: -4px;
 
     &:visited 
     {
-      color: $second-color;
+      color: $main-color;
 
       &:hover {
         background: $second-color;        
@@ -74,7 +69,6 @@
     &:active, 
     &.active 
     { 
-      /*text-decoration: underline;*/
       background: $main-color;
       color: #fff;
       outline: $main-color;

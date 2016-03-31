@@ -2,6 +2,15 @@
 	&-image {
 		position: relative;
 		margin-bottom: 10px;
+		
+		.btn {
+			padding: 0;
+		}
+
+		img,
+		iframe {
+			transition: box-shadow ease-in .1s;
+		}
 	}
 
 	&-image-hover {
@@ -19,9 +28,15 @@
 		}
 	}
 
+
 	&-image:hover {
 		.work-image-hover {
 			display: block;
+		}
+
+		img,
+		iframe {
+			box-shadow: 0px 0px 15px #000;
 		}
 	}
 }

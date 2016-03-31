@@ -3,3 +3,4 @@ tmp
 .sass-cache
 .npm-log
 *.css.map
+dist

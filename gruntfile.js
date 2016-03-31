@@ -1,10 +1,6 @@
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-autoprefixer');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-assemble');
+
+  require('jit-grunt')(grunt);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -12,7 +8,7 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         files: {
-          'dist/js/scripts.js': ['components/js/main.js']
+          'dist/js/main.js': ['components/js/main.js']
         }
       }
     },
@@ -20,11 +16,20 @@ module.exports = function(grunt) {
     sass: {
       dev: {
         options: {
-          style: 'compressed',
+          style: 'expanded',
           sourcemap: 'none'
         },
         files: {
           'dist/css/main.css': 'components/sass/main.scss'
+        }
+      },
+      build: {
+        options: {
+          style: 'compressed',
+          sourcemap: 'none'
+        },
+        files: {
+          'compiled/css/main.css': 'components/sass/main.scss'
         }
       }
     },
@@ -37,23 +42,30 @@ module.exports = function(grunt) {
         expand: true,
         flatten: true,
         src: 'compiled/*.css',
-        dest: ''
+        dest: 'dist/css/'
       }
     },
 
     watch: {
-      options: { livereload: true },
+      options: {
+        livereload: true
+      },
+      grunfile: { files: 'gruntfile.js' },
       sass: {
         files: ['components/**/*.scss'],
         tasks: ['sass', 'autoprefixer']          
       },
       scripts: {
-        files: ['components/js/*.js', 'images/*/**'],
-        tasks: ['copy']
+        files: ['components/js/*.js'],
+        tasks: ['copy:script']
       },
       assemble: {
         files: ['components/**/*.hbs', 'components/data/*.{json,yml}'],
         tasks: ['assemble']
+      },
+      images: {
+        files: ['images/**/*'],
+        tasks: ['copy:images']
       }
     },
 
@@ -66,16 +78,10 @@ module.exports = function(grunt) {
       },
       script: {
         files: [{
-          src: ['components/js/*'],
+          src: ['components/js/**/*'],
           dest: 'dist/js/',
           flatten: true,
           expand: true
-        }]
-      },
-      jquery: {
-        files: [{
-          src: 'js/jquery-1.8.2.min.js',
-          dest: 'dist/'
         }]
       },
       images: {
@@ -83,6 +89,28 @@ module.exports = function(grunt) {
           src: 'images/**/*',
           dest: 'dist/'
         }] 
+      },
+      fonts: {
+        files: [{
+          src: 'css/fonts/**/*',
+          dest: 'dist/css/fonts',
+          expand: true, 
+          flatten: true
+        }]
+      },
+      files : {
+        files: [{
+          src: ['*.pdf'],
+          dest: 'dist/'
+        }]
+      },
+      bootstrap: {
+        files: [{
+          src: ['node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js'],
+          dest: 'dist/js/',
+          expand: true, 
+          flatten: true
+        }]
       }
     },
 
@@ -108,26 +136,35 @@ module.exports = function(grunt) {
       }
     },
 
-    handlebars: {
-      compile: {
+    connect: {
+      server: {
         options: {
-          namespace: "SG.templates"
-        },
-        files: {
-          "path/to/result.js": "path/to/source.hbs",
-          "path/to/another.js": ["path/to/sources/*.hbs", "path/to/more/*.hbs"]
-        }
+          base: 'dist/',
+          open: true,
+          hostname: 'localhost'
+        }        
       }
     }
-
   });
 
   grunt.registerTask('default', 
     [
     'copy', 
-    'sass', 
-    'autoprefixer', 
+    'sass:dev',  
     'assemble', 
+    'connect',
+    'watch'
+    ]
+  );
+
+  grunt.registerTask('build', 
+    [
+    'copy', 
+    'sass:build', 
+    'autoprefixer', 
+    'uglify',
+    'assemble',
+    'connect',
     'watch'
     ]
   );

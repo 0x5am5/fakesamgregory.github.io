@@ -35,6 +35,13 @@
   }
 }
 
+.modal {
+  padding: 20px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
 
 
 .pro-pic
@@ -219,17 +226,21 @@
     }
   }
 
-  .js .more-trigger {
-    display: inline-block;
-  }
+  .js .show-more {
 
-  .js .more {
-    display: none;
-
-    &.show {
+    .more {
       display: block;
     }
+
+    .more-trigger {
+      display: inline-block;
+
+      .glyphicon {
+        display: none;
+      }
+    }
   }
+
   .body-show {
     .more-txt {
         display: none;

@@ -3,7 +3,9 @@
   		{{#if embed}}
   			<iframe src="{{src}}" frameborder="0" class="img-responsive"></iframe>
   		{{else}}
+  			{{#if modal}}<button type="button" class="btn btn-link" data-toggle="modal" data-target="#workModal" data-content="{{modal}}">{{/if}}
 	  		<img src="images/{{src}}" alt="{{alt}}" class="img-responsive">  
+  			{{#if modal}}</button>{{/if}}
 	  		<div class="work-image-hover">
 	  			{{#if link}}<a href="{{link}}" target="_blank">{{/if}}
 	  				{{alt}}    			

@@ -5,7 +5,19 @@
   z-index:1;
 
   .social-items {
-    float: right;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+
+    .fa {
+      font-size: 2em;      
+    }
+    a {
+      display: block;
+    }
+    ul {
+      margin-bottom: 0;
+    }
   }
 
   .nav-wrap {
@@ -76,7 +88,9 @@
 @media screen and (max-width: $screen-sm-min) {
   .header {
     .social-items {
-      float: none;
+      position: relative;
+      right: auto;
+      bottom: auto;
     }
   } 
 }
