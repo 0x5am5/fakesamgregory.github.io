@@ -4,3 +4,4 @@ tmp
 .npm-log
 *.css.map
 dist
+.tmp

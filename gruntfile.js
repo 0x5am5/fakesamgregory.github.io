@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         files: {
-          'dist/js/main.js': ['components/js/main.js']
+          'dist/js/main.js': ['.tmp/js/main.js']
         }
       }
     },
@@ -56,8 +56,8 @@ module.exports = function(grunt) {
         tasks: ['sass', 'autoprefixer']          
       },
       scripts: {
-        files: ['components/js/*.js'],
-        tasks: ['copy:script']
+        files: ['components/js/**/*.js'],
+        tasks: ['browserify']
       },
       assemble: {
         files: ['components/**/*.hbs', 'components/data/*.{json,yml}'],
@@ -75,14 +75,6 @@ module.exports = function(grunt) {
           // flattens results to a single level
           {expand: true, flatten: true, src: ['node_modules/bootstrap-sass/assets/fonts/bootstrap/**/*'], dest: 'css/fonts', filter: 'isFile'},
         ],
-      },
-      script: {
-        files: [{
-          src: ['components/js/**/*'],
-          dest: 'dist/js/',
-          flatten: true,
-          expand: true
-        }]
       },
       images: {
         files: [{
@@ -102,14 +94,6 @@ module.exports = function(grunt) {
         files: [{
           src: ['*.pdf'],
           dest: 'dist/'
-        }]
-      },
-      bootstrap: {
-        files: [{
-          src: ['node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js'],
-          dest: 'dist/js/',
-          expand: true, 
-          flatten: true
         }]
       }
     },
@@ -144,12 +128,52 @@ module.exports = function(grunt) {
           hostname: 'localhost'
         }        
       }
-    }
+    },
+
+    htmlmin: {                                     
+      dist: {                                      
+        options: {                                 
+          removeComments: true,
+          collapseWhitespace: true,
+          removeTagWhitespace: true,
+          removeAttributeQuotes: true,
+          useShortDoctype: true,
+          removeEmptyAttributes: true
+        },
+        files: [
+           {
+              expand: true,
+              cwd: 'dist/',
+              src: '**/*.html',
+              dest: 'dist/'
+           }
+        ]
+      }
+    },
+
+    browserify: {
+         options: {
+            browserifyOptions: {
+               debug: true
+            }
+         },
+         dist: {
+            files: {
+               '.tmp/js/main.js': 'components/js/**/*.js'
+            }
+         },
+         dev: {
+          files: {
+               'dist/js/main.js': 'components/js/**/*.js'
+            }
+         }
+      }
   });
 
   grunt.registerTask('default', 
     [
     'copy', 
+    'browserify:dev',
     'sass:dev',  
     'assemble', 
     'connect',
@@ -160,10 +184,12 @@ module.exports = function(grunt) {
   grunt.registerTask('build', 
     [
     'copy', 
+    'browserify:dist',
+    'uglify',
     'sass:build', 
     'autoprefixer', 
-    'uglify',
     'assemble',
+    'htmlmin',
     'connect',
     'watch'
     ]

@@ -10326,18 +10326,24 @@ a:hover, a:focus, a:active, a.active {
   border-radius: 30px;
   background-position-y: -350px;
   background-repeat-y: no-repeat;
+  height: 300px;
 }
 .pro-pic img {
+  width: 0;
   max-width: 300px;
   max-height: 300px;
-  border-radius: 300px;
+  border-radius: 50%;
   border: 5px solid #68838B;
   box-shadow: 2px 2px 10px #888888;
+  transition: width 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .pro-pic--animate {
   transition: background-position-y ease 1.5s;
   background-position-y: 0;
+}
+.pro-pic--animate img {
+  width: 100%;
 }
 
 .employer .role {
@@ -10427,10 +10433,13 @@ a:hover, a:focus, a:active, a.active {
   }
 }
 @media screen and (max-width: 550px) {
+  .pro-pic {
+    height: 150px;
+  }
   .pro-pic img {
     max-width: 150px;
     max-height: 150px;
-    border-radius: 150px;
+    border-radius: 50%;
   }
 
   .section {
