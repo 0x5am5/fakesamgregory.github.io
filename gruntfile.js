@@ -17,7 +17,7 @@ module.exports = function(grunt) {
       dev: {
         options: {
           style: 'expanded',
-          sourcemap: 'none'
+          sourceMap: true
         },
         files: {
           'dist/css/main.css': 'components/sass/main.scss'
@@ -26,7 +26,7 @@ module.exports = function(grunt) {
       build: {
         options: {
           style: 'compressed',
-          sourcemap: 'none'
+          sourceMap: false
         },
         files: {
           'compiled/css/main.css': 'components/sass/main.scss'
@@ -71,10 +71,13 @@ module.exports = function(grunt) {
 
     copy: {
       main: {
-        files: [
-          // flattens results to a single level
-          {expand: true, flatten: true, src: ['node_modules/bootstrap-sass/assets/fonts/bootstrap/**/*'], dest: 'css/fonts', filter: 'isFile'},
-        ],
+        files: [{
+          expand: true, 
+          flatten: true, 
+          src: 'node_modules/bootstrap-sass/assets/fonts/bootstrap/**/*', 
+          dest: 'css/fonts', 
+          filter: 'isFile'
+        }]
       },
       images: {
         files: [{
@@ -93,6 +96,12 @@ module.exports = function(grunt) {
       files : {
         files: [{
           src: ['*.pdf'],
+          dest: 'dist/'
+        }]
+      },
+      favicon: {
+        files: [{
+          src: 'favicon.ico',
           dest: 'dist/'
         }]
       }
@@ -167,11 +176,16 @@ module.exports = function(grunt) {
                'dist/js/main.js': 'components/js/**/*.js'
             }
          }
+      },
+
+      clean: {
+        dist: 'dist/*'
       }
   });
 
   grunt.registerTask('default', 
     [
+    'clean',
     'copy', 
     'browserify:dev',
     'sass:dev',  
@@ -189,9 +203,7 @@ module.exports = function(grunt) {
     'sass:build', 
     'autoprefixer', 
     'assemble',
-    'htmlmin',
-    'connect',
-    'watch'
+    'htmlmin'
     ]
   );
 }
