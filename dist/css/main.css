@@ -10109,18 +10109,6 @@ a {
   padding: 3px 4px;
   margin-left: -4px;
 }
-a:visited {
-  color: #68838B;
-}
-a:visited:hover {
-  background: #dbe2e4;
-}
-a:hover, a:focus, a:active, a.active {
-  background: #68838B;
-  color: #fff;
-  outline: #68838B;
-  border-radius: 3px;
-}
 
 .access {
   position: absolute;
@@ -10292,6 +10280,10 @@ a:hover, a:focus, a:active, a.active {
   padding: 20px;
 }
 
+.logos img {
+  margin: 5px;
+}
+
 .title {
   padding: 10px 20px;
   position: relative;
@@ -10320,30 +10312,28 @@ a:hover, a:focus, a:active, a.active {
 }
 
 .pro-pic {
-  text-align: center;
-  background: url(../images/bg-img.jpg);
   margin-bottom: 30px;
   border-radius: 30px;
-  background-position-y: -350px;
-  background-repeat-y: no-repeat;
   height: 300px;
 }
+.pro-pic .pro-image {
+  position: relative;
+}
 .pro-pic img {
-  width: 0;
+  position: absolute;
+  left: 100vw;
+  opacity: 0;
   max-width: 300px;
-  max-height: 300px;
   border-radius: 50%;
   border: 5px solid #68838B;
   box-shadow: 2px 2px 10px #888888;
-  transition: width 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition: left ease 2s 1s, opacity ease 2.5s 1s;
 }
 
-.pro-pic--animate {
-  transition: background-position-y ease 1.5s;
-  background-position-y: 0;
-}
 .pro-pic--animate img {
-  width: 100%;
+  left: 10px;
+  margin: 0;
+  opacity: 1;
 }
 
 .employer .role {
@@ -10386,19 +10376,11 @@ a:hover, a:focus, a:active, a.active {
   margin: 0;
 }
 
-#home .more-trigger {
-  display: none;
-}
-
 .more-trigger {
-  /*display: none;*/
   border: none;
-  background: #FFF;
-  font-size: 23px;
   font-weight: bold;
-  margin: 0;
-  padding-bottom: 5px;
-  padding: 5px 20px;
+  padding: 0;
+  margin-bottom: 10px;
 }
 .more-trigger .less-txt {
   display: none;
@@ -10408,22 +10390,33 @@ a:hover, a:focus, a:active, a.active {
   display: none;
 }
 
+.section__head .more-trigger {
+  background: #FFF;
+  font-size: 23px;
+  margin: 0;
+  padding: 5px 20px;
+}
+
 .js .show-more .more {
   display: none;
 }
 .js .show-more .more.show {
   display: block;
 }
-.js .show-more .more-trigger .glyphicon-minus {
+.js .show-more .more-trigger .glyphicon-minus,
+.js .show-more .more-trigger .toggle-hide {
   display: none;
 }
-.js .show-more .more-trigger .glyphicon-plus {
+.js .show-more .more-trigger .glyphicon-plus,
+.js .show-more .more-trigger .toggle-show {
   display: inline-block;
 }
-.js .show-more .more-trigger.body-show .glyphicon-minus {
+.js .show-more .more-trigger.body-show .glyphicon-minus,
+.js .show-more .more-trigger.body-show .toggle-hide {
   display: inline-block;
 }
-.js .show-more .more-trigger.body-show .glyphicon-plus {
+.js .show-more .more-trigger.body-show .glyphicon-plus,
+.js .show-more .more-trigger.body-show .toggle-show {
   display: none;
 }
 
@@ -10432,14 +10425,24 @@ a:hover, a:focus, a:active, a.active {
     padding: 135px 20px 5px 20px;
   }
 }
+@media screen and (max-width: 940px) {
+  .pro-pic img {
+    margin-top: 20px;
+    position: relative;
+  }
+}
 @media screen and (max-width: 550px) {
   .pro-pic {
-    height: 150px;
+    height: auto;
   }
   .pro-pic img {
     max-width: 150px;
     max-height: 150px;
     border-radius: 50%;
+    left: 0;
+  }
+  .pro-pic .hello {
+    font-size: 16px;
   }
 
   .section {
@@ -10540,6 +10543,9 @@ a:hover, a:focus, a:active, a.active {
   display: none;
 }
 
+.work {
+  margin-bottom: 20px;
+}
 .work-image {
   position: relative;
   margin-bottom: 10px;
@@ -10570,4 +10576,17 @@ a:hover, a:focus, a:active, a.active {
 .work-image:hover img,
 .work-image:hover iframe {
   box-shadow: 0px 0px 15px #000;
+}
+
+.hello {
+  padding: 40px;
+  opacity: 0;
+  transition: opacity ease 2s 3s;
+  font-size: 42px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.pro-pic--animate .hello {
+  opacity: 1;
 }

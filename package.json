@@ -16,6 +16,8 @@
     "grunt-contrib-connect": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-htmlmin": "^1.1.0",
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-responsive-images": "^0.1.7",
     "jit-grunt": "^0.10.0"
   }
 }
