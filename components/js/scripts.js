@@ -82,7 +82,6 @@ if (!touch) {
 	});	
 };
 
-
 // Navigation
 $('.nav-wrap').on('click', 'a', function(e) {
 	e.preventDefault();
@@ -109,4 +108,19 @@ $('.show-more').each(function() {
 	});		
 });
 
-document.querySelector('.pro-pic').classList.add('pro-pic--animate');
+$('.show-more').each(function() {
+	var body = $(this).find('.more'),
+			trigger = $(this).find('.more-trigger');
+
+	trigger.on('click', function(e) {
+		if (!$(e.currentTarget).is('h2')) e.preventDefault();
+		body.toggleClass('show');
+		trigger.toggleClass('body-show');
+	});		
+});
+
+setTimeout(function() {
+	document.querySelector('.pro-pic').classList.add('pro-pic--animate');
+}, 100);
+
+modules.export = 'scripts';

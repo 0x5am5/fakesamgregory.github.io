@@ -55,25 +55,21 @@
     padding: 3px 4px;
     margin-left: -4px;
 
-    &:visited 
-    {
-      color: $main-color;
+    // &:visited 
+    // {
+    //   color: $main-color;
+    // }
 
-      &:hover {
-        background: $second-color;        
-      }
-    }
-
-    &:hover, 
-    &:focus,
-    &:active, 
-    &.active 
-    { 
-      background: $main-color;
-      color: #fff;
-      outline: $main-color;
-      border-radius: 3px;
-    } 
+    // &:hover, 
+    // &:focus,
+    // &:active, 
+    // &.active 
+    // { 
+    //   background: $main-color;
+    //   color: #fff;
+    //   outline: $main-color;
+    //   border-radius: 3px;
+    // } 
   }
 
 

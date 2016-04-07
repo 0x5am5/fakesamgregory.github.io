@@ -1,40 +1,89 @@
 <div class="main-content container">
   <div class="pro-pic">
-    <img src="https://avatars1.githubusercontent.com/u/9591167?v=3&s=460" alt="me" class="pro-img">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="pro-image text-center">
+          <img src="https://avatars1.githubusercontent.com/u/9591167?v=3&s=460" alt="me" class="pro-img">
+        </div>
+      </div>
+      <div class="col-sm-8 hidden-xs hidden-sm">
+        <div class="hello">
+          Hi, my name is Sam. I'm a front-end web and digital media professional. Feel free to look around.      
+        </div>
+      </div>
+    </div>
   </div>
   <h1 class="access">Sam Gregory - Web Developer &amp; Digital Media Professional</h1>
      
   <div class="post section" id="home">  
     <h2 class="access">Who I am</h2>
     <span class="h2">Hi There!</span>
-    <div class="section__content">
+    <div class="section__content show-more">
       <p>
-        I am an experienced digital media and production professional currently working as a Front-End Developer for <a href="http://digital-detox.co.uk" target="_blank">Digital Detox</a>, a Web Development agency based in South London. Primarily using HTML CSS and JAVASCRIPT for key clients, such as Vodafone and Cancer Research UK. In my spare time i also create websites freelance as well as using After Effects to apply post-production VFX. This can be seen in 2 Rathergood productions <a href="http://" target="_blank">Uncle Wormsley's Christmas</a> and <a href="http://" target="_blank">Ship of Eagles</a> as well as HARK's music promo for <a href="http://" target="_blank">Scarlett Extremeties</a>
+        I am an experienced digital media and production professional currently working as a Front-End Developer for <a href="http://digital-detox.co.uk" target="_blank">Digital Detox</a>, a Web Development agency based in South London. Primarily using HTML CSS and JAVASCRIPT. I love the web and In my spare time I have also created websites for my theatre company <a href="http://velvettrumpet.co.uk" target="_blank">Velvet Trumpet</a>, <a href="http://3dux.co.uk" target="_blank">3DUX</a> and <a href="http://idcreativemedia.co.uk" target="_blank">ID Creative Media</a> amongst others. My expertise pan to film and television where i was able to create post-production VFX using After Effects to  <a href="http://rathergood.com" target="_blank">Rathergood.com</a>'s productions <a href="http://" target="_blank">Uncle Wormsley's Christmas</a> and <a href="http://" target="_blank">Ship of Eagles</a> as well as HARK's music promo for <a href="http://" target="_blank">Scarlett Extremeties</a>.
       </p>
+      
+      <button type="button" class="more-trigger btn btn-link hidden-xs">
+        <span class="toggle-show">Show</span>
+        <span class="toggle-hide">Hide</span>
+        more...
+      </button>
 
-      <p>
-        Before my work at Digital Detox, for three years I leveraged and honed my technical expertise using Adobe CS and Developer skills (HTML, CSS, Javascript, PHP, MySQL, Actionscript) on key projects at <a href="http://framestore.com" target="_blank">Framestore</a> in their Design and Digital portfolio. A rewarding experience spanning interactive, VFX, motion graphics, titles and credits, and motion capture. Highlights include building British Airways’ “Take a Plane Down Your Street” web/Facebook app, which has been said to be <q cite="Mail%20On%20Sunday,%2023%20June%202012">The most successful social media app ever</q> (Mail On Sunday, 23 June 2012), titles and end rollers for the film “Tyrannosaur”, and working on visual graphics for Secret Cinema’s “Prometheus” show.
-      </p>
-      <p>
-        In addition, my interest in live performance led me to co-create <a href="http://velvettrumpet.co.uk" target="_blank">Velvet Trumpet</a>, a theatre company in which I am Production Manager. I was thrilled to be at the helm of their first production “A Model Life”, which ran at The Network Theatre to rave reviews. Velvet Trumpet's latest production 'Don't Disturb the Driver' was featured at the 2013 Edinburgh Fringe, and we now hope to hold regular nights at the Hen &amp; Chickens Theatre Pub with our first show being "Toast".
-      </p>
-      <p>
-        Specialties: Front end web Development (HTML/CSS/Javascript), VFX (AFTER Effects), Project Management/Production.
-      </p>
-
+      <div class="more">
+        <p>
+          Before my work at Digital Detox, for three years I leveraged and honed my technical expertise using Adobe CS and Developer skills (HTML, CSS, Javascript, PHP, MySQL, Actionscript) on key projects at <a href="http://framestore.com" target="_blank">Framestore</a> in their Design and Digital portfolio. A rewarding experience spanning interactive, VFX, motion graphics, titles and credits, and motion capture. Highlights include building British Airways’ “Take a Plane Down Your Street” web/Facebook app, which has been said to be <q cite="Mail%20On%20Sunday,%2023%20June%202012">The most successful social media app ever</q> (Mail On Sunday, 23 June 2012), titles and end rollers for the film “Tyrannosaur”, and working on visual graphics for Secret Cinema’s “Prometheus” show.
+        </p>
+        <p>
+          In addition, my interest in live performance led me to co-create <a href="http://velvettrumpet.co.uk" target="_blank">Velvet Trumpet</a>, a theatre company in which I am Production Manager. I was thrilled to be at the helm of their first production “A Model Life”, which ran at The Network Theatre to rave reviews. Velvet Trumpet's latest production 'Don't Disturb the Driver' was featured at the 2013 Edinburgh Fringe, and we now hope to hold regular nights at the Hen &amp; Chickens Theatre Pub with our first show being "Toast".
+        </p>
+        <p>
+          Specialties: Front end web Development (HTML/CSS/Javascript), VFX (AFTER Effects), Project Management/Production.
+        </p>        
+      </div>
     </div>
   </div>
   
-  <h2 class="access">Work</h2>
-  <div class="row">
-    {{#each this.portfolio}}
-      {{> work-item}}
-    {{/each}}
-  </div> 
+  <div class="work">
+    <h2 class="access">Work</h2>
+    <div class="row">
+      {{#each this.portfolio}}
+        {{> work-item}}
+      {{/each}}
+    </div>     
+  </div>
 
-  <div class="grid section">
-    <h2>Solutions</h2>
+    <div id="knowledge" class="grid section">
+    <h2>What I know</h2>
     <div class="section__content">
+      <h3>Technical Knowledge</h3>
+      <ul class="list-unstyled logos list-inline text-center">
+        {{#each this.work}}
+          <li><img src="/images/{{src}}" alt="" srcset="/images/{{src}} 1x, /images/{{filename}}@2x.{{ext}} 2x"></li>
+        {{/each}}
+      </ul>
+      <h3>Personal Skills</h3>
+      <div class="employer">
+        <ul>
+          <li>Confident in front of large groups of people</li>
+          <li>Strong leader with perspective across the entire project</li>
+          <li>Positive work ethic</li>
+          <li>Extremely hard working, dedicated and happy to help</li>
+          <li>Try and get the most out of people</li>
+          <li>Strong desire to inspire</li>
+        </ul>
+      </div>          
+    </div>
+  </div>
+
+  <div class="section show-more">
+    <div class="section__head">
+      <button type="button" class="more-trigger">
+        Solutions
+        <span class="glyphicon glyphicon-plus"></span>
+        <span class="glyphicon glyphicon-minus"></span>
+      </button>
+    </div>
+    <div class="section__content more">
       <h3>Websites</h3>
       <p>
         <strong>Development</strong> - With countless years developing front-end websites and over 4 years professional experience I can provide solutions in front-end and back-end using Wordpress CMS. Specialising in HMTL5, CSS3 and Javascript with considerations towards SEO and accessibility I can produce clean, accessible code with you or your customers in mind
@@ -49,50 +98,14 @@
     </div>
   </div>
 
-  <div id="knowledge" class="grid section show-more">
-    <button type="button" class="more-trigger">
-      What I know
-      <span class="glyphicon glyphicon-plus"></span>
-      <span class="glyphicon glyphicon-minus"></span>
-    </button>
-    <div class="section__content more">
-      <div class="row">
-        <div class="col-sm-6">
-          <h3>Technical Knowledge</h3>
-          <ul>
-            <li>HTML</li>
-            <li>CSS/SASS/compass/BEM</li>
-            <li>Javascript/Jquery</li>
-            <li>PHP/Laravel</li>
-            <li><a href="https://github.com/sambogreggers" target="_blank">Github</a>/SVN</li>
-            <li>Grunt</li>
-            <li>Photoshop</li>
-            <li>After Effects</li>
-          </ul>
-        </div>
-        <div class="col-sm-6">
-          <h3>Personal Skills</h3>
-          <div class="employer">
-            <ul>
-              <li>Confident in front of large groups of people</li>
-              <li>Strong leader with perspective across the entire project</li>
-              <li>Positive work ethic</li>
-              <li>Extremely hard working, dedicated and happy to help</li>
-              <li>Try and get the most out of people</li>
-              <li>Strong desire to inspire</li>
-            </ul>
-          </div>          
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="exp" class="section show-more">
-    <button type="button" class="more-trigger">
-      Where i've worked
-      <span class="glyphicon glyphicon-plus"></span>
-      <span class="glyphicon glyphicon-minus"></span>
-    </button>
+    <div class="section__head">
+      <button type="button" class="more-trigger">
+        Where i've worked
+        <span class="glyphicon glyphicon-plus"></span>
+        <span class="glyphicon glyphicon-minus"></span>
+      </button>
+    </div>
     <div class="section__content more">
       <div class="employer">
         <h3>

@@ -1,0 +1,14 @@
+.hello {
+	padding: 40px;
+	opacity: 0;
+	transition: opacity ease 2s 3s;
+	font-size: 42px;
+	font-weight: 700;		
+	font-style: italic;
+}
+
+.pro-pic--animate {
+	.hello {
+		opacity: 1;
+	}
+}
