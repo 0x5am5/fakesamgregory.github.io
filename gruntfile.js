@@ -50,7 +50,7 @@ module.exports = function(grunt) {
       options: {
         livereload: true
       },
-      grunfile: { files: 'gruntfile.js' },
+      gruntfile: { files: 'gruntfile.js' },
       sass: {
         files: ['components/**/*.scss'],
         tasks: ['sass', 'autoprefixer']          
@@ -71,29 +71,26 @@ module.exports = function(grunt) {
 
     copy: {
       main: {
-        files: [{
-          expand: true, 
-          flatten: true, 
-          src: 'node_modules/bootstrap-sass/assets/fonts/bootstrap/**/*', 
-          dest: 'css/fonts', 
-          filter: 'isFile'
-        }]
+        expand: true, 
+        src: 'node_modules/bootstrap-sass/assets/fonts/bootstrap/*', 
+        dest: 'dist/css/fonts', 
+        filter: 'isFile'
       },
       images: {
         expand: true,
         flatten: true,
         cwd: 'components/images/',
-        src: '*.{jpg,gif,png}',
+        src: '**/*.{jpg,gif,png}',
         dest: 'dist/images/'
       },
       fonts: {
-        src: 'css/fonts/**/*',
+        cwd: 'css/fonts/',
+        src: '**/*',
         dest: 'dist/css/fonts',
-        expand: true, 
-        flatten: true
+        expand: true
       },
-      files : {
-        src: ['*.pdf'],
+      files: {
+        src: ['*.pdf', 'favicon.ico'],
         dest: 'dist/'
       }
     },
@@ -110,23 +107,17 @@ module.exports = function(grunt) {
             {
               name: "large",
               width: '100%',
-              suffix: "@x2",
+              suffix: "@2x",
               rename: false
             }
           ]
         },
-        files: {
+        files: [{
           expand: true,
           flatten: true,
           src: ['*.{jpg,gif,png}'],
           cwd: 'components/images/logos/',
           dest: 'dist/images/'
-        }
-      },
-      favicon: {
-        files: [{
-          src: 'favicon.ico',
-          dest: 'dist/'
         }]
       }
     },
@@ -142,14 +133,12 @@ module.exports = function(grunt) {
         options: {
           layout: 'master.hbs'
         },
-       files: [
-           {
-              expand: true,
-              cwd: 'components/pages/',
-              src: '**/*.hbs',
-              dest: 'dist/'
-           }
-        ]
+        files: [{
+          expand: true,
+          cwd: 'components/pages/',
+          src: '**/*.hbs',
+          dest: 'dist/'
+        }]
       }
     },
 
@@ -173,51 +162,53 @@ module.exports = function(grunt) {
           useShortDoctype: true,
           removeEmptyAttributes: true
         },
-        files: [
-           {
-              expand: true,
-              cwd: 'dist/',
-              src: '**/*.html',
-              dest: 'dist/'
-           }
-        ]
+        files: [{
+          expand: true,
+          cwd: 'dist/',
+          src: '**/*.html',
+          dest: 'dist/'
+        }]
       }
     },
 
     browserify: {
-       options: {
+      options: {
           browserifyOptions: {
              debug: true
           }
-       },
-       dist: {
-          files: {
-               'dist/js/main.js': 'components/js/**/*.js'
-            }
-         }
       },
-
+      dist: {
+          files: {
+              '.tmp/js/main.js': 'components/js/**/*.js'
+            }
+        }
+      },
       clean: {
-        dist: 'dist/*'
-             '.tmp/js/main.js': 'components/js/**/*.js'
+        dist: {
+          files: {
+            '.tmp/js/main.js': 'components/js/**/*.js'
           }
-       },
-       dev: {
-        files: {
-             'dist/js/main.js': 'components/js/**/*.js'
+        },
+        dev: {
+          files: {
+            'dist/js/main.js': 'components/js/**/*.js'
           }
        }
     },
 
-    imagemin: {                          // Task
-      dynamic: {                         // Another target
+    imagemin: {                       
+      dynamic: {                      
         files: [{
-          expand: true,                  // Enable dynamic expansion
-          cwd: 'dist/images/',                   // Src matches are relative to this path
-          src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
-          dest: 'dist/images/'                  // Destination path prefix
+          expand: true,               
+          cwd: 'dist/images/',                
+          src: ['**/*.{png,jpg,gif}'],
+          dest: 'dist/images/'               
         }]
       }
+    },
+
+    clean: {
+      build: ['dist/']
     }
   });
 
@@ -232,7 +223,7 @@ module.exports = function(grunt) {
             filename: filename.replace(/.(jpg|gif|png)/, ''),
             ext: ext
            }
-          );
+        );
       }
     });
     grunt.file.write('components/data/work.json', JSON.stringify(images));
@@ -243,7 +234,6 @@ module.exports = function(grunt) {
       'clean',
       'copy', 
       'imageloop',
-      'copy',
       'responsive_images',
       'browserify:dev',
       'sass:dev', 
@@ -255,6 +245,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', 
     [
+    'clean',
     'imageloop',
     'copy:main', 'copy:fonts', 'copy:files',
     'imagemin', 

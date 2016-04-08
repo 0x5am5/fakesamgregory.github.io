@@ -58,18 +58,21 @@
       <h3>Technical Knowledge</h3>
       <ul class="list-unstyled logos list-inline text-center">
         {{#each this.work}}
-          <li><img src="/images/{{src}}" alt="" srcset="/images/{{src}} 1x, /images/{{filename}}@2x.{{ext}} 2x"></li>
+          <li>
+            <img src="/images/{{src}}" alt="" srcset="images/{{src}} 1x, images/{{filename}}@2x.{{ext}} 2x">
+          </li>
         {{/each}}
       </ul>
       <h3>Personal Skills</h3>
-      <div class="employer">
+      <div class="employer row">
         <ul>
-          <li>Confident in front of large groups of people</li>
-          <li>Strong leader with perspective across the entire project</li>
-          <li>Positive work ethic</li>
-          <li>Extremely hard working, dedicated and happy to help</li>
-          <li>Try and get the most out of people</li>
-          <li>Strong desire to inspire</li>
+          <li class="col-sm-6">Confident in front of large groups of people</li>
+          <li class="col-sm-6">Strong leader with perspective across the entire project</li>
+          <li class="col-sm-6">Proficient in project management</li>
+          <li class="col-sm-6">Positive work ethic</li>
+          <li class="col-sm-6">Extremely hard working, dedicated and happy to help</li>
+          <li class="col-sm-6">Try and get the most out of people</li>
+          <li class="col-sm-6">Strong desire to inspire</li>
         </ul>
       </div>          
     </div>

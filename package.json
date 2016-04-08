@@ -17,14 +17,10 @@
     "grunt-contrib-connect": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-htmlmin": "^1.1.0",
-<<<<<<< HEAD
+    "grunt-contrib-imagemin": "^1.0.0",
+    "grunt-responsive-images": "^0.1.7",
     "grunt-sass": "^1.1.0",
     "jit-grunt": "^0.10.0",
     "jquery": "^2.2.3"
-=======
-    "grunt-contrib-imagemin": "^1.0.0",
-    "grunt-responsive-images": "^0.1.7",
-    "jit-grunt": "^0.10.0"
->>>>>>> ec2195efd239425860fa1aa2cc795f5e0606f7bd
   }
 }

@@ -122,5 +122,3 @@ $('.show-more').each(function() {
 setTimeout(function() {
 	document.querySelector('.pro-pic').classList.add('pro-pic--animate');
 }, 100);
-
-modules.export = 'scripts';
