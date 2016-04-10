@@ -39,10 +39,8 @@ module.exports = function(grunt) {
         browsers: ['last 2 versions']
       },
       multiple_files: {
-        expand: true,
-        flatten: true,
-        src: 'compiled/*.css',
-        dest: 'dist/css/'
+        src: 'compiled/css*/main.css',
+        dest: 'dist/css/main.css'
       }
     },
 
