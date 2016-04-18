@@ -1,103 +1,60 @@
-// @import url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+body {
+  font: 100%/1.4 'MuseoSans-500', Arial, Helvetica;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font-size: 16px;
+  background: $second-color;
+}
 
-  body {
-    font: 100%/1.4 'MuseoSans-500', Arial, Helvetica;
-    margin: 0;
-    padding: 0;
-    color: #333;
+::selection {
+  background: $darkGreen; /* Safari */
+  color:#FFF;
+}
+::-moz-selection {
+  background: $darkGreen; /* Firefox */
+  color:#FFF;    
+}
+
+h1, h2, h3, h4 {
+  margin-top: 0;  
+}
+
+h2,
+.h2 {
+  font-size: 23px;
+  font-weight: bold;
+  display: inline-block;
+  background: #fff;
+  margin: 0;
+  padding-bottom: 5px;
+  padding: 5px 20px;
+}
+h3,
+.h3 {
+  margin: 10px 0 0;
+  font-size: 16px;
+  color: #666;
+}
+
+h3 { 
+  a:link,
+  & a:visited {
     font-size: 16px;
-    background: $second-color;
   }
+}
 
-  ::selection {
-    background: $darkGreen; /* Safari */
-    color:#FFF;
-  }
-  ::-moz-selection {
-    background: $darkGreen; /* Firefox */
-    color:#FFF;    
-  }
-
-  h1, h2, h3, h4 {
-    margin-top: 0;  
-  }
-
-  h2,
-  .h2 {
-    font-size: 23px;
-    font-weight: bold;
-    display: inline-block;
-    background: #fff;
-    /*margin-bottom: 10px;*/
-    margin: 0;
-    padding-bottom: 5px;
-    padding: 5px 20px;
-  }
-  h3,
-  .h3 {
-    margin: 10px 0 0;
-    font-size: 16px;
-    color: #666;
-  }
-
-  h3
-  { 
-    a:link,
-    & a:visited,
-    & .employer-title {
-      font-size: 16px;
-    }
-  }
-
-  a 
-  {
-    padding: 3px 4px;
-    margin-left: -4px;
-
-    // &:visited 
-    // {
-    //   color: $main-color;
-    // }
-
-    // &:hover, 
-    // &:focus,
-    // &:active, 
-    // &.active 
-    // { 
-    //   background: $main-color;
-    //   color: #fff;
-    //   outline: $main-color;
-    //   border-radius: 3px;
-    // } 
-  }
-
-
-  .access {
-    position: absolute;
-    left: -9999px;
-  }
-
-
-  .grid {
-    overflow: hidden;
-
-    .col {
-      float: left;
-      display: inline-block;
-    }
-
-    .w-50 {
-      width: 50%;
-    }
-  }
+a {
+  padding: 3px 4px;
+  margin-left: -4px;
+}
 
 @media screen and (max-width: 550px) {
 
   body {
     font-size: 14px;
   }
-  ul
-  {
+  ul {
     padding-left: 25px;
 
   }

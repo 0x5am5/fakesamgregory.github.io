@@ -127,7 +127,7 @@ $('.show-more').each(function() {
 });
 
 setTimeout(function() {
-	document.querySelector('.pro-pic').classList.add('pro-pic--animate');
+	document.querySelector('.main-head').classList.add('main-head--animate');
 }, 100);
 
 module.exports = myReact;

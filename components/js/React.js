@@ -26,18 +26,18 @@ var GenerateLink = React.createClass({
 	render: function() {
 
 		if (this.props.image.link) {
-			return (<div className="work-image">
-						<ReturnImage image={this.props.image} />
-						<div className="work-image-hover">
-  							<a href={this.props.image.link} target="_blank"><span className="sr-only">Go to</span>
-  								{this.props.image.alt}    			
-  							</a>
-  						</div>
+			return (<div className="work__image">
+								<ReturnImage image={this.props.image} />
+								<div className="work__image-hover">
+	  							<a href={this.props.image.link} target="_blank"><span className="sr-only">Go to</span>
+	  								{this.props.image.alt}    			
+	  							</a>
+	  						</div>
   					</div>);
 		} else {
-			return (<div className="work-image">
+			return (<div className="work__image">
 						<ReturnImage image={this.props.image} />
-						<div className="work-image-hover">
+						<div className="work__image-hover">
 							{this.props.image.alt}  
 						</div>
 					</div>);
@@ -50,7 +50,9 @@ var GenerateLink = React.createClass({
 var WorkMedia = React.createClass({
 	render: function() {
 		if (this.props.item.embed) {
-			return <iframe src={this.props.item.src} frameborder="0" className="img-responsive" />;
+			return (<div className="work__image">
+								<iframe src={this.props.item.src} frameborder="0" className="img-responsive" />
+							</div>);
 		} else {
 			
 			return <GenerateLink image={this.props.item} />;

@@ -1,9 +1,10 @@
 .work {
 	margin-bottom: 20px;
 	
-	&-image {
+	&__image {
 		position: relative;
-		margin-bottom: 10px;
+		margin-bottom: 25px;
+		display: inline-block;
 		
 		.btn {
 			padding: 0;
@@ -15,7 +16,7 @@
 		}
 	}
 
-	&-image-hover {
+	&__image-hover {
 		position: absolute;
 		width: 100%;
 		bottom: 0;
@@ -31,8 +32,8 @@
 	}
 
 
-	&-image:hover {
-		.work-image-hover {
+	&__image:hover {
+		.work__image-hover {
 			display: block;
 		}
 
