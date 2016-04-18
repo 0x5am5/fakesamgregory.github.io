@@ -1,12 +1,20 @@
 // Colors
-$main-color: #68838B;
-$second-color: lighten($main-color, 40);
+$darkGreen: #006a4d;
+$lightGreen: #2d8259;
+$brightGreen: #649c00;
+$darkBlue: #68838B;
+$lightBlue: lighten($darkBlue, 40);
+
+$main-color: $darkGreen;
+$second-color: $lightBlue;
 
 // Other
 $border-radius: 5px;
 
 // Bootstrap
 $icon-font-path: 'fonts/';
+$link-color: $lightGreen;
+$link-hover-color: $brightGreen;
 
 // Font awesome
 $fa-font-path: 'fonts/';

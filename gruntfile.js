@@ -17,20 +17,20 @@ module.exports = function(grunt) {
       dev: {
         options: {
           style: 'expanded',
-          sourcemap: 'none'
+          sourceMap: true
         },
-        files: {
+        files: [{
           'dist/css/main.css': 'components/sass/main.scss'
-        }
+        }]
       },
       build: {
         options: {
           style: 'compressed',
-          sourcemap: 'none'
+          sourceMap: false
         },
-        files: {
+        files: [{
           'compiled/css/main.css': 'components/sass/main.scss'
-        }
+        }]
       }
     },
 
@@ -48,14 +48,14 @@ module.exports = function(grunt) {
       options: {
         livereload: true
       },
-      grunfile: { files: 'gruntfile.js' },
+      gruntfile: { files: 'gruntfile.js' },
       sass: {
         files: ['components/**/*.scss'],
         tasks: ['sass', 'autoprefixer']          
       },
       scripts: {
         files: ['components/js/**/*.js'],
-        tasks: ['browserify']
+        tasks: ['browserify:dev']
       },
       assemble: {
         files: ['components/**/*.hbs', 'components/data/*.{json,yml}'],
@@ -63,15 +63,21 @@ module.exports = function(grunt) {
       },
       images: {
         files: ['components/images/**/*'],
-        tasks: ['copy:images']
-      }
+        tasks: ['clean:images', 'copy:images', 'imageloop']
+      },
+      json: {
+        cwd: 'components/js/',
+        files: ['json/*.json'],
+        tasks: ['copy:json']
+      },
     },
 
     copy: {
       main: {
-        files: [
-          {expand: true, flatten: true, src: ['node_modules/bootstrap-sass/assets/fonts/bootstrap/**/*'], dest: 'css/fonts', filter: 'isFile'},
-        ],
+        expand: true, 
+        src: 'node_modules/bootstrap-sass/assets/fonts/bootstrap/*', 
+        dest: 'dist/css/fonts', 
+        filter: 'isFile'
       },
       images: {
         expand: true,
@@ -81,14 +87,20 @@ module.exports = function(grunt) {
         dest: 'dist/images/'
       },
       fonts: {
-        src: 'css/fonts/**/*',
+        cwd: 'css/fonts/',
+        src: '**/*',
         dest: 'dist/css/fonts',
-        expand: true, 
-        flatten: true
+        expand: true
       },
-      files : {
-        src: ['*.pdf'],
+      files: {
+        src: ['*.pdf', 'favicon.ico'],
         dest: 'dist/'
+      },
+      json: {
+        expand: true,
+        cwd: 'components/js/',
+        src: 'json/*.json',
+        dest: 'dist/js/'
       }
     },
 
@@ -96,17 +108,20 @@ module.exports = function(grunt) {
       images: {
         options: {
           sizes: [
-          {
-            name: 'small',
-            width: '50%',
-            rename: false
-          },
-          {
-            name: "large",
-            width: '100%',
-            suffix: "@x2",
-            rename: false
-          }]
+            {
+              name: 'small',
+              width: '112',
+              height: '112',
+              rename: false
+            },
+            {
+              name: "large",
+              width: '225',
+              height: '225',
+              suffix: "@2x",
+              rename: false
+            }
+          ]
         },
         files: [{
           expand: true,
@@ -129,14 +144,12 @@ module.exports = function(grunt) {
         options: {
           layout: 'master.hbs'
         },
-       files: [
-           {
-              expand: true,
-              cwd: 'components/pages/',
-              src: '**/*.hbs',
-              dest: 'dist/'
-           }
-        ]
+        files: [{
+          expand: true,
+          cwd: 'components/pages/',
+          src: '**/*.hbs',
+          dest: 'dist/'
+        }]
       }
     },
 
@@ -160,45 +173,50 @@ module.exports = function(grunt) {
           useShortDoctype: true,
           removeEmptyAttributes: true
         },
-        files: [
-           {
-              expand: true,
-              cwd: 'dist/',
-              src: '**/*.html',
-              dest: 'dist/'
-           }
-        ]
+        files: [{
+          expand: true,
+          cwd: 'dist/',
+          src: '**/*.html',
+          dest: 'dist/'
+        }]
       }
     },
 
     browserify: {
-       options: {
-          browserifyOptions: {
-             debug: true
-          }
-       },
-       dist: {
-          files: {
-             '.tmp/js/main.js': 'components/js/**/*.js'
-          }
-       },
-       dev: {
+      options: {
+        browserifyOptions: {
+          debug: true
+        },
+        transform: [['babelify', {presets: ['react']}]]
+      },
+      dist: {
         files: {
-             'dist/js/main.js': 'components/js/**/*.js'
-          }
-       }
+          '.tmp/js/main.js': 'components/js/**/*.js'
+        }
+      },
+      dev: {
+        files: {
+          'dist/js/main.js': 'components/js/**/*.js'
+        }
+      }
     },
 
-    imagemin: {                          // Task
-      dynamic: {                         // Another target
+    imagemin: {                       
+      dynamic: {                      
         files: [{
-          expand: true,                  // Enable dynamic expansion
-          cwd: 'dist/images/',                   // Src matches are relative to this path
-          src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
-          dest: 'dist/images/'                  // Destination path prefix
+          expand: true,               
+          cwd: 'dist/images/',                
+          src: ['**/*.{png,jpg,gif}'],
+          dest: 'dist/images/'               
         }]
       }
+    },
+
+    clean: {
+      build: ['dist/'],
+      images: ['dist/images']
     }
+    
   });
 
   grunt.registerTask('imageloop', function() {
@@ -212,7 +230,7 @@ module.exports = function(grunt) {
             filename: filename.replace(/.(jpg|gif|png)/, ''),
             ext: ext
            }
-          );
+        );
       }
     });
     grunt.file.write('components/data/work.json', JSON.stringify(images));
@@ -220,21 +238,24 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default',
     [
-    'imageloop',
-    'copy',
-    'responsive_images',
-    'browserify:dev',
-    'sass:dev', 
-    'assemble', 
-    'connect',
-    'watch'
+      'clean:build',
+      'copy', 
+      'imageloop',
+      'responsive_images',
+      'browserify:dev',
+      'sass:dev', 
+      'assemble', 
+      'connect',
+      'watch'
     ]
   );
 
   grunt.registerTask('build', 
     [
+    'clean:build',
     'imageloop',
-    'copy:main', 'copy:fonts', 'copy:files',
+    'copy:main', 'copy:fonts', 'copy:files', 'copy:json', 'copy:images',
+    'responsive_images',
     'imagemin', 
     'browserify:dist',
     'uglify',
