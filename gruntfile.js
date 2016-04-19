@@ -219,28 +219,28 @@ module.exports = function(grunt) {
     
   });
 
-  grunt.registerTask('imageloop', function() {
-    var images = [];
-    grunt.file.recurse('components/images/logos', function(abspath, rootdir, subdir, filename) {
-      if (filename.match(/jpg|gif|png/)) {
-        var ext = filename.match(/jpg|gif|png/);
-        images.push(
-          { 
-            src: filename,
-            filename: filename.replace(/.(jpg|gif|png)/, ''),
-            ext: ext
-           }
-        );
-      }
-    });
-    grunt.file.write('components/data/work.json', JSON.stringify(images));
-  });
+  // grunt.registerTask('imageloop', function() {
+  //   var images = [];
+  //   grunt.file.recurse('components/images/logos', function(abspath, rootdir, subdir, filename) {
+  //     if (filename.match(/jpg|gif|png/)) {
+  //       var ext = filename.match(/jpg|gif|png/);
+  //       images.push(
+  //         { 
+  //           src: filename,
+  //           filename: filename.replace(/.(jpg|gif|png)/, ''),
+  //           ext: ext
+  //          }
+  //       );
+  //     }
+  //   });
+  //   grunt.file.write('components/data/work.json', JSON.stringify(images));
+  // });
 
   grunt.registerTask('default',
     [
       'clean:build',
       'copy', 
-      'imageloop',
+      // 'imageloop',
       'responsive_images',
       'browserify:dev',
       'sass:dev', 
@@ -253,7 +253,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', 
     [
     'clean:build',
-    'imageloop',
+    // 'imageloop',
     'copy:main', 'copy:fonts', 'copy:files', 'copy:json', 'copy:images',
     'responsive_images',
     'imagemin', 
