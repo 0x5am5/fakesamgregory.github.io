@@ -45,6 +45,11 @@
   {
     "src": "cruk.jpg",
     "alt": "Cancer Research Website"
+  },
+  {
+    "src": "waspplumbing.jpg",
+    "alt": "Wasp Plumbing Website SEO, data schema and optimisation",
+    "link": "http://www.waspplumbing.com.au",
+    "tags": "SEO optimisation data schema google rankings html"
   }
-
 ]
