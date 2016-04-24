@@ -185,9 +185,9 @@ module.exports = function(grunt) {
     browserify: {
       options: {
         browserifyOptions: {
-          debug: true
+          debug: true,
+          transform: [['babelify', {presets: ['react']}]]
         },
-        transform: [['babelify', {presets: ['react']}]]
       },
       dist: {
         files: {
@@ -215,6 +215,17 @@ module.exports = function(grunt) {
     clean: {
       build: ['dist/'],
       images: ['dist/images']
+    },
+
+    env : {
+      dist : {
+        NODE_ENV : 'production',
+        DEST     : 'dist'        
+      },
+      dev : {
+        NODE_ENV : 'development',
+        DEST     : 'dist'        
+      },
     }
     
   });
@@ -238,6 +249,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default',
     [
+      'env:dev',
       'clean:build',
       'copy', 
       // 'imageloop',
@@ -252,6 +264,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', 
     [
+    'env:dist',
     'clean:build',
     // 'imageloop',
     'copy:main', 'copy:fonts', 'copy:files', 'copy:json', 'copy:images',
