@@ -8215,12 +8215,13 @@ a {
     box-shadow: 2px 2px 10px #888888;
     transition: left ease 2s 1s, opacity ease 2.5s 1s; }
   .main-head__hello {
-    padding: 40px;
+    padding: 40px 70px;
     opacity: 0;
     transition: opacity ease 2s 3s;
-    font-size: 42px;
+    font-size: 32px;
     font-weight: 700;
-    font-style: italic; }
+    font-style: italic;
+    border-left: 0; }
   @media screen and (max-width: 940px) {
     .main-head__pro-img {
       margin-top: 20px;
@@ -8243,3 +8244,8 @@ a {
 
 .main-head--animate .main-head__hello {
   opacity: 1; }
+
+.carousel-control {
+  width: 10%; }
+  .carousel-control.left, .carousel-control.right {
+    background-image: none; }
