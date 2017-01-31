@@ -88,12 +88,10 @@ module.exports = function(grunt) {
       images: {
         expand: true,
         flatten: true,
-        cwd: '/',
         src: '<%= config.src %>/images/*.{jpg,gif,png}',
         dest: '<%= config.dist %>/images/'
       },
       fonts: {
-        cwd: '/',
         src: '<%= config.src %>/css/fonts/**/*',
         dest: '<%= config.dist %>/css/fonts',
         expand: true
@@ -104,7 +102,6 @@ module.exports = function(grunt) {
       },
       json: {
         expand: true,
-        cwd: '/',
         src: '<%= config.src %>/js/json/*.json',
         dest: '<%= config.dist %>/js/'
       }
@@ -132,8 +129,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           flatten: true,
-          src: ['*.{jpg,gif,png}'],
-          cwd: '<%= config.src %>/images/logos/',
+          src: ['<%= config.src %>/images/logos/*.{jpg,gif,png}'],
           dest: '<%= config.dist %>/images/'
         }]
       }
