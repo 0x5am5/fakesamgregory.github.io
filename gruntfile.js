@@ -3,8 +3,8 @@ module.exports = function(grunt) {
   require('jit-grunt')(grunt);
 
   var config = {
-      dist: 'docs',
-      src: 'src'
+      dist: 'assets',
+      src: 'app'
   };
 
   grunt.initConfig({
@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         files: {
-          '<%= config.dist %>/js/main.js': ['.tmp/js/main.js']
+          '<%= config.dist %>/js/main.js': ['<%= config.dist %>/js/main.js']
         }
       }
     },
@@ -26,7 +26,7 @@ module.exports = function(grunt) {
           sourceMap: true
         },
         files: [{
-          '<%= config.dist %>/css/main.css': 'components/sass/main.scss'
+          '<%= config.dist %>/css/main.css': '<%= config.src %>/sass/main.scss'
         }]
       },
       build: {
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
           sourceMap: false
         },
         files: [{
-          'compiled/css/main.css': 'components/sass/main.scss'
+          'compiled/css/main.css': '<%= config.src %>/sass/main.scss'
         }]
       }
     },
@@ -56,23 +56,23 @@ module.exports = function(grunt) {
       },
       gruntfile: { files: 'gruntfile.js' },
       sass: {
-        files: ['components/**/*.scss'],
+        files: ['<%= config.src %>/**/*.scss'],
         tasks: ['sass', 'autoprefixer']          
       },
       scripts: {
-        files: ['components/js/**/*.js'],
+        files: ['<%= config.src %>/js/**/*.js'],
         tasks: ['browserify:dev']
       },
       assemble: {
-        files: ['components/**/*.hbs', 'components/data/*.{json,yml}'],
+        files: ['<%= config.src %>/**/*.hbs', '<%= config.src %>/data/*.{json,yml}'],
         tasks: ['assemble']
       },
       images: {
-        files: ['components/images/**/*'],
+        files: ['<%= config.src %>/images/**/*'],
         tasks: ['clean:images', 'copy:images', 'imageloop']
       },
       json: {
-        cwd: 'components/js/',
+        cwd: '<%= config.src %>/js/',
         files: ['json/*.json'],
         tasks: ['copy:json']
       },
@@ -88,13 +88,13 @@ module.exports = function(grunt) {
       images: {
         expand: true,
         flatten: true,
-        cwd: 'components/images/',
-        src: '*.{jpg,gif,png}',
+        cwd: '/',
+        src: '<%= config.src %>/images/*.{jpg,gif,png}',
         dest: '<%= config.dist %>/images/'
       },
       fonts: {
-        cwd: 'css/fonts/',
-        src: '**/*',
+        cwd: '/',
+        src: '<%= config.src %>/css/fonts/**/*',
         dest: '<%= config.dist %>/css/fonts',
         expand: true
       },
@@ -104,8 +104,8 @@ module.exports = function(grunt) {
       },
       json: {
         expand: true,
-        cwd: 'components/js/',
-        src: 'json/*.json',
+        cwd: '/',
+        src: '<%= config.src %>/js/json/*.json',
         dest: '<%= config.dist %>/js/'
       }
     },
@@ -133,7 +133,7 @@ module.exports = function(grunt) {
           expand: true,
           flatten: true,
           src: ['*.{jpg,gif,png}'],
-          cwd: 'components/images/logos/',
+          cwd: '<%= config.src %>/images/logos/',
           dest: '<%= config.dist %>/images/'
         }]
       }
@@ -141,20 +141,17 @@ module.exports = function(grunt) {
 
     assemble: {
       options: {
-        assets: '/',
-        partials: ['components/partials/**/*.hbs'],
-        layoutdir: 'components/layouts',
-        data: ['components/data/*.{json,yml}']
+        assets: '<%= config.dist %>',
+        partials: ['<%= config.src %>/partials/*.hbs'],
+        layout: ['<%= config.src %>/layouts/master.hbs'],
+        data: ['<%= config.src %>/data/*.{json,yml}']
       },
       site: {
-        options: {
-          layout: 'master.hbs'
-        },
         files: [{
           expand: true,
-          cwd: 'components/pages/',
-          src: '**/*.hbs',
-          dest: '<%= config.dist %>/'
+          flatten: true,
+          src: '<%= config.src %>/pages/*.hbs',
+          dest: './'
         }]
       }
     },
@@ -162,7 +159,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          base: '<%= config.dist %>/',
+          base: '',
           open: true,
           hostname: 'localhost'
         }        
@@ -197,12 +194,12 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          '.tmp/js/main.js': 'components/js/**/*.js'
+          '<%= config.dist %>/js/main.js': '<%= config.src %>/js/**/*.js'
         }
       },
       dev: {
         files: {
-          '<%= config.dist %>/js/main.js': 'components/js/**/*.js'
+          '<%= config.dist %>/js/main.js': '<%= config.src %>/js/**/*.js'
         }
       }
     },
@@ -238,7 +235,7 @@ module.exports = function(grunt) {
 
   // grunt.registerTask('imageloop', function() {
   //   var images = [];
-  //   grunt.file.recurse('components/images/logos', function(abspath, rootdir, subdir, filename) {
+  //   grunt.file.recurse('<%= config.src %>/images/logos', function(abspath, rootdir, subdir, filename) {
   //     if (filename.match(/jpg|gif|png/)) {
   //       var ext = filename.match(/jpg|gif|png/);
   //       images.push(
@@ -250,7 +247,7 @@ module.exports = function(grunt) {
   //       );
   //     }
   //   });
-  //   grunt.file.write('components/data/work.json', JSON.stringify(images));
+  //   grunt.file.write('<%= config.src %>/data/work.json', JSON.stringify(images));
   // });
 
   grunt.registerTask('default',
