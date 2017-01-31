@@ -91,11 +91,6 @@ module.exports = function(grunt) {
         src: '<%= config.src %>/images/*.{jpg,gif,png}',
         dest: '<%= config.dist %>/images/'
       },
-      fonts: {
-        src: '<%= config.src %>/css/fonts/**/*',
-        dest: '<%= config.dist %>/css/fonts',
-        expand: true
-      },
       files: {
         src: ['*.pdf', 'favicon.ico'],
         dest: '<%= config.dist %>/'
@@ -267,7 +262,7 @@ module.exports = function(grunt) {
     'env:dist',
     'clean:build',
     // 'imageloop',
-    'copy:main', 'copy:fonts', 'copy:files', 'copy:json', 'copy:images',
+    'copy:main', 'copy:files', 'copy:json', 'copy:images',
     'responsive_images',
     'imagemin', 
     'browserify:dist',
