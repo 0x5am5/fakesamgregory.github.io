@@ -102,8 +102,9 @@ module.exports = function(grunt) {
       },
       json: {
         expand: true,
+        flatten: true,
         src: '<%= config.src %>/js/json/*.json',
-        dest: '<%= config.dist %>/js/'
+        dest: '<%= config.dist %>/js/json'
       }
     },
 
