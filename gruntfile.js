@@ -2,13 +2,19 @@ module.exports = function(grunt) {
 
   require('jit-grunt')(grunt);
 
+  var config = {
+      dist: 'docs',
+      src: 'src'
+  };
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    config: config,
 
     uglify: {
       my_target: {
         files: {
-          'dist/js/main.js': ['.tmp/js/main.js']
+          '<%= config.dist %>/js/main.js': ['.tmp/js/main.js']
         }
       }
     },
@@ -20,7 +26,7 @@ module.exports = function(grunt) {
           sourceMap: true
         },
         files: [{
-          'dist/css/main.css': 'components/sass/main.scss'
+          '<%= config.dist %>/css/main.css': 'components/sass/main.scss'
         }]
       },
       build: {
@@ -40,7 +46,7 @@ module.exports = function(grunt) {
       },
       multiple_files: {
         src: 'compiled/css*/main.css',
-        dest: 'dist/css/main.css'
+        dest: '<%= config.dist %>/css/main.css'
       }
     },
 
@@ -76,7 +82,7 @@ module.exports = function(grunt) {
       main: {
         expand: true, 
         src: 'node_modules/bootstrap-sass/assets/fonts/bootstrap/*', 
-        dest: 'dist/css/fonts', 
+        dest: '<%= config.dist %>/css/fonts', 
         filter: 'isFile'
       },
       images: {
@@ -84,23 +90,23 @@ module.exports = function(grunt) {
         flatten: true,
         cwd: 'components/images/',
         src: '*.{jpg,gif,png}',
-        dest: 'dist/images/'
+        dest: '<%= config.dist %>/images/'
       },
       fonts: {
         cwd: 'css/fonts/',
         src: '**/*',
-        dest: 'dist/css/fonts',
+        dest: '<%= config.dist %>/css/fonts',
         expand: true
       },
       files: {
         src: ['*.pdf', 'favicon.ico'],
-        dest: 'dist/'
+        dest: '<%= config.dist %>/'
       },
       json: {
         expand: true,
         cwd: 'components/js/',
         src: 'json/*.json',
-        dest: 'dist/js/'
+        dest: '<%= config.dist %>/js/'
       }
     },
 
@@ -128,7 +134,7 @@ module.exports = function(grunt) {
           flatten: true,
           src: ['*.{jpg,gif,png}'],
           cwd: 'components/images/logos/',
-          dest: 'dist/images/'
+          dest: '<%= config.dist %>/images/'
         }]
       }
     },
@@ -148,7 +154,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'components/pages/',
           src: '**/*.hbs',
-          dest: 'dist/'
+          dest: '<%= config.dist %>/'
         }]
       }
     },
@@ -156,7 +162,7 @@ module.exports = function(grunt) {
     connect: {
       server: {
         options: {
-          base: 'dist/',
+          base: '<%= config.dist %>/',
           open: true,
           hostname: 'localhost'
         }        
@@ -175,9 +181,9 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'dist/',
+          cwd: '<%= config.dist %>/',
           src: '**/*.html',
-          dest: 'dist/'
+          dest: '<%= config.dist %>/'
         }]
       }
     },
@@ -196,7 +202,7 @@ module.exports = function(grunt) {
       },
       dev: {
         files: {
-          'dist/js/main.js': 'components/js/**/*.js'
+          '<%= config.dist %>/js/main.js': 'components/js/**/*.js'
         }
       }
     },
@@ -205,16 +211,16 @@ module.exports = function(grunt) {
       dynamic: {                      
         files: [{
           expand: true,               
-          cwd: 'dist/images/',                
+          cwd: '<%= config.dist %>/images/',                
           src: ['**/*.{png,jpg,gif}'],
-          dest: 'dist/images/'               
+          dest: '<%= config.dist %>/images/'               
         }]
       }
     },
 
     clean: {
-      build: ['dist/'],
-      images: ['dist/images']
+      build: ['<%= config.dist %>/'],
+      images: ['<%= config.dist %>/images']
     },
 
     env : {
