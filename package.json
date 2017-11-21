@@ -1,6 +1,9 @@
 {
   "name": "samgregorywebsite",
   "version": "0.0.2",
+  "scripts": {
+    "start": "grunt"
+  },
   "dependencies": {
     "babel-preset-react": "^6.5.0",
     "babelify": "^7.2.0",
@@ -9,6 +12,7 @@
     "grunt-contrib-uglify": ">=0.4.0",
     "grunt-contrib-watch": "~0.4.0",
     "handlebars": "^4.0.5",
+    "node-sass": "^4.7.2",
     "react": "^15.0.1",
     "react-dom": "^15.0.1"
   },
