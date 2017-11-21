@@ -12,7 +12,6 @@ module.exports = function(grunt) {
     config: config,
 
     uglify: {
-
       my_target: {
         files: {
           '<%= config.dist %>/js/main.js': ['<%= config.dist %>/js/main.js']
@@ -39,7 +38,7 @@ module.exports = function(grunt) {
           sourceMap: false
         },
         files: [{
-          'compiled/css/main.css': '<%= config.src %>/sass/main.scss'
+          '<%= config.dist %>/css/main.css': '<%= config.src %>/sass/main.scss'
         }]
       }
     },
@@ -49,7 +48,7 @@ module.exports = function(grunt) {
         browsers: ['last 2 versions']
       },
       multiple_files: {
-        src: 'compiled/css*/main.css',
+        src: '<%= config.dist %>/css/main.css',
         dest: '<%= config.dist %>/css/main.css'
       }
     },
