@@ -7906,7 +7906,8 @@ a {
   background: #fff; }
   .footer ul {
     margin: 0;
-    padding: 0; }
+    padding: 0;
+    list-style: none; }
   .footer li {
     width: 50%;
     float: left;

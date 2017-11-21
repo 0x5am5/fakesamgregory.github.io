@@ -83,10 +83,10 @@ module.exports = function(grunt) {
 
     copy: {
       main: {
-        expand: true, 
-        src: 'node_modules/bootstrap-sass/assets/fonts/bootstrap/*', 
-        dest: '<%= config.dist %>/css/fonts', 
-        filter: 'isFile'
+        src: '*',
+        dest: '<%= config.dist %>/css/fonts',
+        cwd: 'node_modules/bootstrap-sass/assets/fonts/bootstrap/',
+        expand: true,
       },
       images: {
         expand: true,
@@ -228,30 +228,13 @@ module.exports = function(grunt) {
     
   });
 
-  // grunt.registerTask('imageloop', function() {
-  //   var images = [];
-  //   grunt.file.recurse('<%= config.src %>/images/logos', function(abspath, rootdir, subdir, filename) {
-  //     if (filename.match(/jpg|gif|png/)) {
-  //       var ext = filename.match(/jpg|gif|png/);
-  //       images.push(
-  //         { 
-  //           src: filename,
-  //           filename: filename.replace(/.(jpg|gif|png)/, ''),
-  //           ext: ext
-  //          }
-  //       );
-  //     }
-  //   });
-  //   grunt.file.write('<%= config.src %>/data/work.json', JSON.stringify(images));
-  // });
-
   grunt.registerTask('default',
     [
       'env:dev',
       'clean:build',
       'copy', 
       // 'imageloop',
-      'responsive_images',
+      // 'responsive_images',
       'browserify:dev',
       'sass:dev', 
       'assemble', 

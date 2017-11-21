@@ -90,15 +90,14 @@ if (!touch) {
 };
 
 // Navigation
-$('.nav-wrap').on('click', 'a', function(e) {
-	e.preventDefault();
+$('.scroll').on('click', function(e) {
+  e.preventDefault();
 
-	var target = $(this),
-		id = target.attr('href'),
-		localY = $(id).offset().top,
-		offset = theWindow.width() < 549 ? 0 : headerHeight;
+	var target = $(this);
+  var localY = $(target.attr('href')).offset().top;
+  var offset = theWindow.width() < 549 ? 0 : headerHeight;
 
-	$('body').animate({
+	$('html, body').animate({
 		scrollTop: localY - offset
 	});
 });
