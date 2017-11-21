@@ -94,10 +94,6 @@ module.exports = function(grunt) {
         src: '<%= config.src %>/images/*.{jpg,gif,png}',
         dest: '<%= config.dist %>/images/'
       },
-      files: {
-        src: ['*.pdf', 'favicon.ico'],
-        dest: '<%= config.dist %>/'
-      },
       json: {
         expand: true,
         flatten: true,
