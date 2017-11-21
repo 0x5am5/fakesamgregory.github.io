@@ -2,7 +2,8 @@
   "name": "samgregorywebsite",
   "version": "0.0.2",
   "scripts": {
-    "start": "grunt"
+    "start": "grunt",
+    "build": "grunt build"
   },
   "dependencies": {
     "babel-preset-react": "^6.5.0",

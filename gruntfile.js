@@ -12,9 +12,13 @@ module.exports = function(grunt) {
     config: config,
 
     uglify: {
+
       my_target: {
         files: {
           '<%= config.dist %>/js/main.js': ['<%= config.dist %>/js/main.js']
+        },
+        options: {
+          compress: true
         }
       }
     },
