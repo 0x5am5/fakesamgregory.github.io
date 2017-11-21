@@ -207,7 +207,6 @@ module.exports = function(grunt) {
     },
 
     clean: {
-      build: ['<%= config.dist %>/'],
       images: ['<%= config.dist %>/images']
     },
 
@@ -227,7 +226,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default',
     [
       'env:dev',
-      'clean:build',
+      'clean:images',
       'copy', 
       // 'imageloop',
       // 'responsive_images',
@@ -242,7 +241,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', 
     [
     'env:dist',
-    'clean:build',
+    'clean:images',
     // 'imageloop',
     'copy:main', 'copy:files', 'copy:json', 'copy:images',
     'responsive_images',
