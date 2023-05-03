@@ -1,0 +1,163 @@
+html,
+body {
+    font-family: 'Jacques Francois', serif;
+    transition: background .3s ease-in-out, color .3s ease-in-out;
+}
+
+html.dark body {
+    background: black;
+    color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+.heading {
+    line-height: 1;
+    font-family: 'Jacques Francois Shadow', cursive;
+}
+
+.page-heading {
+    font-size: clamp(16px, 15vw, 15rem);
+}
+
+::-moz-selection {
+    color: white;
+    background: rgba(0, 0, 0, .8);
+}
+
+::selection {
+    color: white;
+    background: rgba(0, 0, 0, .8);
+}
+
+.project-item .project-role,
+.project-item .project-title,
+.service-item .service-front,
+.service-item .service-back {
+    backface-visibility: hidden;
+}
+
+.project-role {
+    transform: rotateX(180deg);
+    background: black;
+}
+
+.service-back {
+    transform: rotateY(180deg);
+    background: black;
+}
+
+.dark .project-item .project-item-inner .project-role {
+    background: white;
+    color: black;
+}
+
+.project-item-inner,
+.service-inner {
+    transition: all .3s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.project-item.active,
+.service-item:hover {
+    .project-item-inner {
+        transform: rotateX(180deg);
+    }
+
+    .service-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+.pill-nav a {
+    transition: border-color .3s ease-in-out;
+}
+
+.dark .pill-nav {
+    a:first-child {
+        border-color: white !important;
+        color: black;
+    }
+
+    a:last-child {
+        border-color: white !important;
+    }
+}
+
+.wave {
+    animation-name: wave-animation;
+
+    /* Refers to the name of your @keyframes element below */
+    animation-duration: 2.5s;
+
+    /* Change to speed up or slow down */
+    animation-iteration-count: infinite;
+
+    /* Never stop waving :) */
+    animation-timing-function: ease-in-out;
+    transform-origin: 70% 70%;
+
+    /* Pivot around the bottom-left palm */
+    display: inline-block;
+}
+
+@keyframes wave-animation {
+    0% {
+        transform: rotate( 0.0deg)
+    }
+
+    10% {
+        transform: rotate(14.0deg)
+    }
+
+    /* The following five values can be played with to make the waving more or less extreme */
+    20% {
+        transform: rotate(-8.0deg)
+    }
+
+    30% {
+        transform: rotate(14.0deg)
+    }
+
+    40% {
+        transform: rotate(-4.0deg)
+    }
+
+    50% {
+        transform: rotate(10.0deg)
+    }
+
+    60% {
+        transform: rotate( 0.0deg)
+    }
+
+    /* Reset for the last half to pause */
+    100% {
+        transform: rotate( 0.0deg)
+    }
+}
+
+.case-study-pill {
+    background: rgba(255, 255, 255, .5);
+    border-color: black;
+}
+
+.dark .case-study-pill {
+    background: rgba(0, 0, 0, .5);
+}
+
+.team-pill {
+    display: none;
+}
+
+.dark {
+    .team-pill {
+        display: block;
+    }
+
+    .solo-pill {
+        display: none;
+    }
+}

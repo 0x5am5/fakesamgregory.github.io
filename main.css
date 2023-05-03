@@ -1,0 +1,203 @@
+html,
+body {
+  font-family: "Jacques Francois", serif;
+  -webkit-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  -o-transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+html.dark body {
+  background: black;
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+.heading {
+  line-height: 1;
+  font-family: "Jacques Francois Shadow", cursive;
+}
+
+.page-heading {
+  font-size: clamp(16px, 15vw, 15rem);
+}
+
+::-moz-selection {
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+::selection {
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.project-item .project-role,
+.project-item .project-title,
+.service-item .service-front,
+.service-item .service-back {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.project-role {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+  background: black;
+}
+
+.service-back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  background: black;
+}
+
+.dark .project-item .project-item-inner .project-role {
+  background: white;
+  color: black;
+}
+
+.project-item-inner,
+.service-inner {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.project-item.active .project-item-inner,
+.service-item:hover .project-item-inner {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+.project-item.active .service-inner,
+.service-item:hover .service-inner {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.pill-nav a {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -o-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+}
+.dark .pill-nav a:first-child {
+  border-color: white !important;
+  color: black;
+}
+.dark .pill-nav a:last-child {
+  border-color: white !important;
+}
+
+.wave {
+  -webkit-animation-name: wave-animation;
+          animation-name: wave-animation;
+  /* Refers to the name of your @keyframes element below */
+  -webkit-animation-duration: 2.5s;
+          animation-duration: 2.5s;
+  /* Change to speed up or slow down */
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  /* Never stop waving :) */
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-transform-origin: 70% 70%;
+      -ms-transform-origin: 70% 70%;
+          transform-origin: 70% 70%;
+  /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@-webkit-keyframes wave-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  10% {
+    -webkit-transform: rotate(14deg);
+            transform: rotate(14deg);
+  }
+  /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    -webkit-transform: rotate(-8deg);
+            transform: rotate(-8deg);
+  }
+  30% {
+    -webkit-transform: rotate(14deg);
+            transform: rotate(14deg);
+  }
+  40% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  50% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  60% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  /* Reset for the last half to pause */
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes wave-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  10% {
+    -webkit-transform: rotate(14deg);
+            transform: rotate(14deg);
+  }
+  /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    -webkit-transform: rotate(-8deg);
+            transform: rotate(-8deg);
+  }
+  30% {
+    -webkit-transform: rotate(14deg);
+            transform: rotate(14deg);
+  }
+  40% {
+    -webkit-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+  }
+  50% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  60% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  /* Reset for the last half to pause */
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+.case-study-pill {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: black;
+}
+
+.dark .case-study-pill {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.team-pill {
+  display: none;
+}
+.dark .team-pill {
+  display: block;
+}
+.dark .solo-pill {
+  display: none;
+}
