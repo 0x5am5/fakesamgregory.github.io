@@ -3,11 +3,12 @@ const theName = params.name || window.localStorage.sg_name
 if (hiText) {
     if (theName) {
         window.localStorage.setItem('sg_name', theName)
+    
+        if (document.getElementById('name')) {
+            document.getElementById('name').innerText = theName
+        }
     }
     
-    if (document.getElementById('name')) {
-        document.getElementById('name').innerText = theName
-    }
 
     hiText.removeAttribute('data-pg-ia-hide')
 
